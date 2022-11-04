@@ -1190,7 +1190,7 @@ Swal.fire({
     var deleteFn = firebase.functions().httpsCallable('recursiveDelete');
     deleteFn({ path: `${path.path}`})
         .then(function(result) {
-            console.log('Delete success: ' + JSON.stringify(result));
+            console.log('Hurray! Delete success: ' + JSON.stringify(result));
         })
             .then(()=>{
           
