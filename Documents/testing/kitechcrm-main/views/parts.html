@@ -28,9 +28,7 @@
   
       </head>
   <body class="">
-    <!-- loader Start -->
-   
-    <!-- loader END -->
+
     <!-- Wrapper Start -->
      <div class="sidebar">
     <div class="logo-details">
@@ -60,39 +58,55 @@
       </li>
       <li>
        <a class="adminelement" href="./listofproducts" style="display: none;">
-         <i  class='bx bx-user' ></i>
+       
+              <i class='bx bxs-cube-alt'></i>
          <span class="links_name">제품목록</span>
        </a>
        <span class="tooltip">제품목록</span>
      </li>
       <li>
        <a class="notadmin" href="./parts" style="display: none;">
-         <i  class='bx bx-user' ></i>
-         <span class="links_name">제품목록</span>
-       </a>
-       <span class="tooltip">제품목록</span>
-     </li>
-       <li>
-       <a class="adminelement" href="./partslist" style="display: none;">
-         <i  class='bx bx-user' ></i>
+    <i class='bx bxs-component' ></i>
          <span class="links_name">부품목록</span>
        </a>
        <span class="tooltip">부품목록</span>
      </li>
+       <li>
+       <a class="adminelement" href="./partslist" style="display: none;">
+ <i class='bx bxs-component' ></i>
+         <span class="links_name">부품목록</span>
+       </a>
+       <span class="tooltip">부품목록</span>
+     </li>
+     <li>
+       <a class="notadmin" href="./materialsdb" style="display: none;">
+ <i class='bx bx-pie-chart-alt-2' ></i>
+         <span class="links_name">소재목록</span>
+       </a>
+       <span class="tooltip">소재목록</span>
+     </li>
+     <li>
+       <a class="notadmin" href="./substances" style="display: none;">
+  <i class='bx bx-dna' ></i>
+         <span class="links_name">물질목록</span>
+       </a>
+       <span class="tooltip">물질목록</span>
+     </li>
           <li>
        <a class="adminelement" href="#" style="display: none;">
-         <i class='bx bx-pie-chart-alt-2' ></i>
+        <i class='bx bx-bell' ></i>
          <span class="links_name">공지사항</span>
        </a>
        <span class="tooltip">공지사항</span>
      </li>
      <li>
        <a class="notadmin" href="#" style="display: none;">
-         <i class='bx bx-pie-chart-alt-2' ></i>
+       <i class='bx bx-bell' ></i>
          <span class="links_name">공지사항</span>
        </a>
        <span class="tooltip">공지사항</span>
      </li>
+        
     
      <li class="profile" style="margin-bottom: 30px; background:#11101D;">
          <div class="profile-details">
@@ -197,7 +211,7 @@
                                                   <p class="mb-0">계정 생성일: 2022/08/02</p>
                                                     <div id="lastsignin"></div>
                                                   <div class="d-flex align-items-center justify-content-center mt-3">
-                                                      <button type="button" class="btn border mr-2" data-toggle="modal" data-target=".bd-example-modal-xl">User</button>
+                                                      <button type="button" style="display: none;" class="btn border mr-2 notadmin" data-toggle="modal" data-target=".bd-example-modal-xl">권한</button>
                                                       <a href="./userprofile" class="btn border mr-2">내 계정</a>
                                                       <a href="/sessionLogout" class="btn border">로그아웃</a>
 
@@ -219,7 +233,7 @@
                         <div class="modal-dialog modal-xl">
                            <div class="modal-content">
                               <div class="modal-header">
-                                 <h5 class="modal-title">Modal title</h5>
+                                 <h5 class="modal-title">부품목록 권한설정</h5>
                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                  <span aria-hidden="true">&times;</span>
                                  </button>
@@ -230,7 +244,10 @@
                            <tr>
                   
                               <th scope="col">Product Manufacturer Name</th>
-                              <th scope="col">Company Address</th>
+                              <th scope="col">Person in charge</th>
+                              <th scope="col">Email address</th>
+                              <th scope="col">Phone number
+</th>
                               <th scope="col">Select to allow part db to display</th>
                            </tr>
                         </thead>
@@ -238,7 +255,9 @@
                            <tr>
                      
                               <td>SAMSUNG Electronics</td>
-                              <td>	816-10 Yeongdeung-dong, 익산시, 전라북도</td>
+                               <td>Micheal Lawson</td>
+                                      <td>	micheal.lawson@example.com</td>
+                       <td>(726) 233-4558</td>
                               <td>     
                            <input type="checkbox" style="height: 21px;" >
                           
@@ -247,7 +266,9 @@
                            <tr>
                   
                               <td>LG Electronics</td>
-                              <td>49 Munoe-dong, 영천시, 경상북도</td>
+                                   <td>Howard Palmer</td>
+                                      <td>	howard.palmer@example.com</td>
+                       <td>(392) 599-4914</td>
                               <td>    
                            <input type="checkbox" style="height: 21px;" >
                           
@@ -256,7 +277,9 @@
                            <tr>
                   
                               <td>Conway Industry</td>
-                              <td>	102-25 Eupnae-dong, 	서산시, 	충청남도</td>
+                                    <td>Louise Hart</td>
+                                      <td>	louise.hart@example.com</td>
+                       <td> (259) 834-1569</td>
                               <td>   
                            <input type="checkbox" style="height: 21px;" >
                           
@@ -265,7 +288,10 @@
                               <tr>
                   
                               <td>Shinil Industry</td>
-                              <td>		301-7 Yeon-dong, 		제주시, 		제주특별자치도</td>
+                                  <td>Beverley Boyd</td>
+                                      <td>	beverley.boyd@example.com</td>
+                       <td> (880) 555-2854</td>
+                           
                               <td>   
                            <input type="checkbox" style="height: 21px;" >
                           
@@ -296,18 +322,46 @@
                 
                <div class="col-lg-8">
             <div class="searchandaddpart">
-                   <button class="btnpr btnpr-add" style="width: 50%; margin-left:50%;"><div class="addnewproductbtnpr">새 부품 등록</div></button>
-     <div class="form-group" id="formfloat" style="width: 100%; margin:0;">
-                     <div class="input-group" >
-                        <input type="text" class="form-control" id="myInputMat" style="margin: 0;" onkeyup='materialSearch()' placeholder="Search Part Name" aria-label="Search Part Name"
+                   <button class="btnpr btnpr-add" style="width: 50%; margin-left:0;"><div class="addnewproductbtnpr">새 부품 등록</div></button>
+                    <div class="form-group" id="formfloat" style="width: 100%; margin:0;">
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend" style="width: 50%;">
+                           <input type="text" class="form-control" id="myInputMat" style="margin: 0; border-radius: 10px 0 0 10px; height:46px;" onkeyup='materialSearch()' name="myInputMat" placeholder="Search Part Name" aria-label="Search Part Name"
                            aria-describedby="basic-addon5">
-                        <div class="input-group-append">
+                        </div>
+                        <select  class="custom-select searchPartSelection" id="inputGroupSelect03">
+                           <option selected>Choose...</option>
+                           <option value="0">Part Name</option>
+                           <option value="1">Part Code</option>
+                        </select>
+                           <div class="input-group-append">
                            <span class="input-group-text" id="basic-addon5"><i class="las la-search font-size-20"></i></span>
                         </div>
                      </div>
                      </div>
+                                  <div class="sortaddpart" style="width: 40%;">
+                
+                       <div class="form-group" id="formfloat" style="width: 100%; margin:0;">
+                      <div class="input-group mb-3">
+                      
+                        <select  class="custom-select sortPartSelection" id="inputGroupSelect03">
+                           <option value="0" selected>Choose...</option>
+                           <option value="0">Sort by Part Name</option>
+                           <option value="1">Sorty by Part Code</option>
+                        </select>
+                           <div class="input-group-append">
+                           <span class="input-group-text" id="basic-addon5"><i class="bx bx-sort font-size-20"></i></span>
+                        </div>
+                     </div>
+                     </div>
             </div>
+            </div>
+
                </div>
+                   
+       
+          
+               
      
                   
                 </div>
@@ -321,10 +375,7 @@
     overflow-y: scroll;"> 
       <table class="table-users parttable" id="myTableMat" >
         <thead style="position: sticky; top: 0; z-index: 1;">
-                <th ><svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 20 20">
-  <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"/>
-  <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
-</svg></th>
+              
              <th>Part Name</th>
     
             <th>Part Code</th>
@@ -351,8 +402,7 @@
         <div class="modaly-body">
           <div class="card-body">
                      <div class="">
-                        <form class="form"  autocomplete="off"  data-toggle="validator" id="form-wizard1">
-                             <ul id="top-tab-list" class="p-0">
+                            <ul id="top-tab-list" class="p-0">
                            
                            <li id="personal">
                               <a href="#personal">
@@ -362,17 +412,30 @@
                        
                         
                         </ul>
+                        <div class="row"> 
+                             <div class="col-md-12"> 
+                                  <form id="upload">
+                           <div class="input-group" style="margin-bottom: 2%; width: 30%; margin-left: 70%;">
+                           <div class="custom-file" >
+                           <input type="file" class="filey custom-file-input" id="inputGroupFile04" accept=".json">
+                           <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                             
+                        </div>
+                         <div class="input-group-append">
+                           <button class="btn btn-outline-secondary" type="submit" style="margin: 0; padding-bottom: 1px;">Upload</button>
+                        </div>
+                     </div>
+                      </form> 
+                              </div>
+                            </div>
+                        <form class="form"  autocomplete="off"  data-toggle="validator" id="form-wizard1">
+                       
                         <!-- fieldsets -->
+                 
                      
                         <fieldset >
                            <div class="form-card text-left">
-                             <div class="row"> 
-                             <div class="row error"> 
-                                <!-- <h3>
-                                    해당 데이터를 확인할 권한이 없습니다
-                                </h3> -->
-                              </div>
-                            </div>
+                         
                          
                             <div class="row">
                            
@@ -401,17 +464,31 @@
                                     </div>
                                 </div> 
                          
-                                 <div class="col-md-3"> 
+                                 <div class="col-md-6"> 
                                     <div class="form-group">
                                         <label>Part Weight (g) *</label>
-                                        <input type="number" step=".01" class="form-control" id='addpartWeight'placeholder="Please part weight" data-errors="Please part weight." name="addpartWeight" required>
+                                        <input type="number" step=".01" class="form-control" id='addpartWeight'placeholder="Please enter part weight" data-errors="Please enter part weight." name="addpartWeight" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div> 
                                  <div class="col-md-6"> 
                                     <div class="form-group">
                                         <label>Part Size (mm x mm x mm) *</label>
-                                        <input type="text" class="form-control" id='addpartSize' placeholder="Please part size (mm x mm x mm)" data-errors="Please part size." name="addpartSize" required>
+                                                   <div class="input-group mb-4" style="align-items: center;">
+                        
+                        <input type="number" class="form-control addpartWidth" placeholder="Width" aria-label="Width"
+                           aria-describedby="basic-addon4" required>
+                    <i class="las la-times" style="margin: 4px;"></i>
+                                <input type="number" class="form-control addpartDepth" placeholder="Depth" aria-label="Depth"
+                           aria-describedby="basic-addon4" required>
+                   <i class="las la-times" style="margin: 4px;"></i>
+                                <input type="number" class="form-control addpartHeight" placeholder="Height" aria-label="notification"
+                           aria-describedby="basic-addon4" required>
+                           <div class="input-group-prepend">
+                           <span class="input-group-text" id="basic-addon4" style="height: 2.8em;
+                              border-radius: 0 10px 10px 0px;"><i class="las la-ruler-combined  font-size-28"></i></span>
+                        </div>
+                     </div>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div> 
@@ -431,7 +508,7 @@
                                     <div class="col-md-6">
                                     <div class="form-group">
                                      <label>Registration Date</label>
-                                        <input type="date" class="form-control" id='addpartregisteredDate'placeholder="Enter Registration Date" data-errors="Please Registration Date." name="addpartregisteredDate" required>
+                                        <input type="date" class="form-control" id='addpartregisteredDate' placeholder="Enter Registration Date" data-errors="Please Registration Date." name="addpartregisteredDate" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -443,14 +520,13 @@
                                     </div>
                                 </div>
                              
-                                
-                                
-                         
-                           
-                        <button  id="addPartsForm" class="btn btn-primary btn-light float-right mr-3"  >Add Part</button>
                                      
                                 </fieldset>
                                 
+                                
+                            <button type="button" class="btn btn-secondary action-button-close" data-dismiss="modaly" >Close</button>
+                        <button type="submit"  id="addPartsForm" class="btn btn-primary btn-dark float-right mr-3"  >Add Part</button>
+               
                    </form>
                  </div>
             <!-- Modal -->
@@ -496,7 +572,7 @@
                                   <div class="col-md-4">                      
                                     <div class="form-group">
                                         <label>Supplier Name *</label>
-                                        <input type="text" class="form-control" id='editsupplierName' placeholder="Enter Supplier Name" data-errors="Please Enter Part Name." name="editsupplierName" required>
+                                        <input readonly type="text" class="form-control" id='editsupplierName' placeholder="Enter Supplier Name" data-errors="Please Enter Part Name." name="editsupplierName" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>   
@@ -546,21 +622,23 @@
                                   <div class="col-md-6">
                                     <div class="form-group">
                                      <label>Registration Date</label>
-                                        <input type="date" class="form-control" id='editpartregisteredDate'placeholder="Enter Registration Date" data-errors="Please Registration Date." name="editpartregisteredDate" required>
+                                        <input type="date" class="form-control" id='editpartregisteredDate' placeholder="Enter Registration Date" data-errors="Please Registration Date." name="editpartregisteredDate" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                      <label>Memo</label>
-                                        <input type="text" class="form-control" id='editMemo'placeholder="Enter Memo" data-errors="Please Enter Memo." name="editMemo" required>
+                                        <input type="text" class="form-control" id='editMemo' placeholder="Enter Memo" data-errors="Please Enter Memo." name="editMemo" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                              
                                 
                                 </fieldset>
-      <button id="edit" class="btn btn-primary btn-light   float-right mr-3"  >Edit Part</button>
+                                             
+                            <button type="button" class="btn btn-secondary action-button-close" data-dismiss="modaly" >Close</button>
+      <button type="submit" id="editPart" class="btn btn-primary btn-dark   float-right mr-3"  >Edit Part</button>
                    </form>
                  </div>
             <!-- Modal -->
@@ -574,14 +652,12 @@
 
 
     <!--add new material-->
-     <div class="addPartMatmodaly modaly-wrapper">
+   <div class="addPartMatmodaly modaly-wrapper" >
       <div class="modaly">
-        <div class="modaly-header"><h3>새 소재 추가</h3></div>
-        <div class="modaly-body">
+     
+        <div class="modaly-body" >
           <div class="card-body">
-                     <div class="">
-                        <form class="form addmatpartform"  autocomplete="off"  data-toggle="validator" id="form-wizard1">
-                             <ul id="top-tab-list" class="p-0">
+                 <ul id="top-tab-list" class="p-0">
                            
                            <li id="personal">
                               <a href="#personal">
@@ -590,17 +666,40 @@
                            </li>
                         
                         </ul>
-                        <!-- fieldsets -->
-                        <fieldset>
-                           <div class="form-card text-left">
-                              <div class="row">
+                 
+            <!-- <div>Upload Files<br />
+<input type="file" id="files" multiple /><br /><br />
+<button id="send">Upload</button>
+<p id="uploading"></p>
+<progress value="0" max="100" id="progress"></progress>
+</div> -->
+                     <form class="form addmatpartform"  autocomplete="off"  data-toggle="validator" id="form-wizard1">
+                        
+                           <div class="row">
                                  <div class="col-7">
                                     <h3 class="mb-4">Enter New Material Details:</h3>
                                  </div>
-                                 <div class="col-5">
-                                    <!-- <h2 class="steps">Step 3 - 4</h2> -->
-                                 </div>
+                                
                               </div>
+
+                        <!-- fieldsets -->
+                        <fieldset>
+                           <div class="form-card text-left">
+                          <div class="row">
+                              <div class="col-md-6">
+                                            <label>Prood File *</label>
+                    <div class="input-group mb-4">
+                        <div class="custom-file mb-3">
+                        
+                           <input type="file" class="custom-file-input files" id="customFile">
+                           <label class="custom-file-label prodImgphld" for="customFile">Upload Proof File</label>
+                        </div>
+                     
+                     </div>
+                          
+                            </div>
+                          </div>
+                           
                               
                            <div class="row">
                                            <div class="col-md-6">                      
@@ -614,43 +713,24 @@
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>  
-                             
-                                  <div class="col-md-6">                
-                                            <div class="form-group">
+                                <div class="col-md-6">                      
+                                    <div class="form-group">
                                         <label>Material Name *</label>
-                                         <select class="form-control addmaterialName" id="editmaterialName" name="addmaterialName" data-errors="Please Enter Product Name."  required>
-                                           
+                                         <select class="form-control addmaterialName" id="editmaterialName"  name="addmaterialName" data-errors="Please Enter Material Category."  required>
+                                            
+                                             
                                            </select>
                                        
                                         <div class="help-block with-errors"></div>
                                     </div>
-                                </div>  
+                                </div> 
+                      
                            </div>  
                         
-                           <div class="row" style="align-items: center; margin-top: 15px; margin-bottom: 15px;">
-                            <div class="col-md-6">
-                                  <div class="custom-control custom-checkbox custom-control-inline">
-                           <input type="checkbox" class="custom-control-input seleccheckbox" id="customCheck5" >
-                           <label class="custom-control-label" for="customCheck5">Selective Materials</label>
-                                   </div>
-                            </div>
-
-                            <div class="col-md-6">
-                              <label>Treatment </label>
-                               <select class="form-control selectiveMat" id="selectiveMat" name="selectiveMat" disabled="true">
-                                           
-                                           </select>
-                            </div>
-                           </div>
+                       
                         
                                <div class="row">
-                                    <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Class ID</label>
-                                        <input type="text" class="form-control"  id='materialClassID' placeholder="Enter Enter Material Class ID" data-errors="Please Class ID." name="addmaterialClassID" required>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div> 
+                                
                                 <div class="col-md-6"> 
                                     <div class="form-group">
                                         <label>Recycle Rate (%)</label>
@@ -658,9 +738,8 @@
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div> 
-                               </div>
-                              <div class="row">
-                                  <div class="col-md-12"> 
+                           
+                                  <div class="col-md-6"> 
                                     <div class="form-group">
                                         <label>Recycle Type *</label>
                                          <select name="addmaterialRecycleType" id="editMaterialRecycleType" class="form-control" data-style="py-0">
@@ -687,12 +766,27 @@
                                  <div class="col-md-6"> 
                                     <div class="form-group">
                                         <label>Material Mass (%) *</label>
-                                        <input type="number"  step=".01"  class="form-control" id='editMaterialMassPerc'placeholder="Please enter Material mass" data-errors="Please part mass." name="addmaterialMassPerc" required>
+                                        <input readonly type="number"  step=".01"  class="form-control" id='editMaterialMassPerc'placeholder="Please enter Material mass" data-errors="Please part mass." name="addmaterialMassPerc" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div> 
                             </div>
-                               <div class="row" style="visibility: hidden;">
+                                <div class="row align-items-center" style="margin-bottom: 15px;" >
+                            <div class="col-md-6">
+                                  <div class="custom-control custom-checkbox custom-control-inline">
+                           <input type="checkbox" class="custom-control-input seleccheckbox" id="customCheck5" >
+                           <label class="custom-control-label" for="customCheck5">Selective Materials</label>
+                                   </div>
+                            </div>
+
+                            <div class="col-md-6">
+                              <label>Treatment </label>
+                               <select class="form-control selectiveMat" id="selectiveMat" name="selectiveMat" disabled="true">
+                                           
+                                           </select>
+                            </div>
+                           </div>
+                               <div class="row" style="visibility: hidden; height: 0;">
                             <div class="col-md-4">
                                 <label>Recoverability</label>
                               <input type="text" class="form-control"  id='recovMat' readonly  data-errors="Please Recoverability." name="addmaterialClassID" required>
@@ -709,7 +803,7 @@
                               <div class="help-block with-errors"></div>
                             </div>
                            </div>
-                                <div class="row" style="visibility: hidden;">
+                                <div class="row" style="visibility: hidden; height: 0;">
                             <div class="col-md-4">
                                 <label>Recoverability</label>
                               <input type="text" class="form-control"  id='selecrecovMat' readonly  data-errors="Please Recoverability." name="addmaterialClassID" required>
@@ -739,154 +833,20 @@
                            </div>
                     
                         <button  id="addMatPartBtn"  class="btn btn-primary btn-light float-right mr-3" >소재 추가</button>
-                             <button type="button" class="btn btn-secondary" id="subsmodalclose" data-dismiss="modaly" >Close</button>
+                             <button type="button" class="btn btn-secondary action-button-close" data-dismiss="modaly" >Close</button>
                         </fieldset>
                       
                    </form>
-                 </div>
-            <!-- Modal -->
+     
              </div>
         </div>
       </div>
     </div>
 
-    <!-- Edit modaly for Material -->
-     <div class="editMatmodaly modaly-wrapper">
-      <div class="modaly">
-        <div class="modaly-header"><h3>Edit <span class="editMatHeader"></span></h3></div>
-        <div class="modaly-body">
-          <div class="card-body">
-                     <div class="">
-                        <form class="form editMatPartForm"  autocomplete="off"  data-toggle="validator" id="form-wizard1">
-                             <ul id="top-tab-list" class="p-0">
-                           
-                           <li id="personal">
-                              <a href="#personal">
-                              <i class="ri-user-fill"></i><span>Material Details </span>
-                              </a>
-                           </li>
-                        
-                        </ul>
-                        <!-- fieldsets -->
-                        <fieldset>
-                           <div class="form-card text-left">
-                              <div class="row">
-                                 <div class="col-7">
-                                    <h3 class="mb-4">Edit Material Details:</h3>
-                                 </div>
-                                 <div class="col-5">
-                                    <!-- <h2 class="steps">Step 3 - 4</h2> -->
-                                 </div>
-                              </div>
-                              
-                           <div class="row">
-                                           <div class="col-md-6">                      
-                                    <div class="form-group">
-                                        <label>Material Group *</label>
-                                          <input type="text" class="form-control"  id='PMmaterialGroup' placeholder="Please Enter Material Category" data-errors="Please Class ID." name="PMmaterialGroup" >
-                                         <!-- <select class="form-control" id="PMmaterialGroup" name="PMmaterialGroup" data-errors="Please Enter Material Category."  required>
-                                       
-                                             
-                                           </select> -->
-                                      
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>  
-                   
-                                  <div class="col-md-6">                
-                                            <div class="form-group">
-                                        <label>Material Name *</label>
-                                         <input type="text" class="form-control editmaterialName"  id='PMmaterialName' placeholder="Please Enter Product Name" data-errors="Please Class ID." name="editmaterialName" >
-                                         <!-- <select class="editmaterialName form-control addmaterialName" id="PMmaterialName" name="editmaterialName" data-errors="Please Enter Product Name."  required>
-                                           
-                                           </select> -->
-                                      
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>  
-                           </div> 
-                             <div class="row" style="align-items: center; margin-top: 15px; margin-bottom: 15px;">
-                            <div class="col-md-6">
-                                  <div class="custom-control custom-checkbox custom-control-inline">
-                           <input type="checkbox" class="custom-control-input seleccheckbox" id="customCheck5" >
-                           <label class="custom-control-label" for="customCheck5">Selective Materials</label>
-                                   </div>
-                            </div>
-
-                            <div class="col-md-6">
-                              <label>Treatment </label>
-                               <select class="form-control selectiveMat" id="selectiveMat" name="selectiveMat" disabled="true">
-                                           
-                                           </select>
-                            </div>
-                           </div> 
-                               <div class="row">
-                                    <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Class ID</label>
-                                        <input type="text" class="form-control"  id='PMmaterialClassID' placeholder="Enter Enter Material Class ID" data-errors="Please Class ID." name="PMmaterialClassID" >
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div> 
-                                <div class="col-md-4"> 
-                                    <div class="form-group">
-                                        <label>Recycle Rate (%)</label>
-                                        <input type="number" class="form-control" id='PMmaterialRecycleContent' placeholder="Enter Material Recycle Content" data-errors="Please part specs." name="editmaterialRecycleContent" required>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div> 
-                               </div>
-                              <div class="row">
-                                  <div class="col-md-12"> 
-                                    <div class="form-group">
-                                        <label>Recycle Type *</label>
-                                         <select name="editMaterialRecycleType" id="PMMaterialRecycleType" class="form-control" data-style="py-0">
-                                           <option>Select Option</option>
-                                       <option>Pre Consumer </option>
-                                       <option>Post Consumer </option>
-                                       <option >Pre+Post Consumer</option>
-                                       <option>Unspecified</option>
-                                    
-                                    
-                                    </select>
-                                        
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div> 
-                              </div>
-                            <div class="row">
-                                     <div class="col-md-6"> 
-                                    <div class="form-group">
-                                        <label>Material Mass (g) *</label>
-                                        <input type="number" class="form-control" id='PMmaterialMassg' placeholder="Please enter Material mass" data-errors="Please part mass." name="editmaterialMassg" required>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div> 
-                                 <div class="col-md-6"> 
-                                    <div class="form-group">
-                                        <label>Material Mass (%) *</label>
-                                        <input type="number" class="form-control" id='PMMaterialMassPerc' placeholder="Please enter Material mass" data-errors="Please part mass." name="editMaterialMassPerc" required>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div> 
-                            </div>
-                           </div>
-                    
-                        <button  id="editMat"  class="btn btn-primary btn-light  action-button-previous float-right mr-3" >소재 편집</button>
-                            <button type="button" id="subsmodalclose" class="btn btn-secondary "  >Close</button>
-                        </fieldset>
-                      
-                   </form>
-                 </div>
-            <!-- Modal -->
-             </div>
-        </div>
-      </div>
-    </div>
 
  <!-- Edit Substance for specific Material -->
-    <div class="addSubsmodaly modaly-wrapper" id="exampleModalScrollableSUBS" >
-      <div class="modaly">
+    <div class="addSubsmodaly modaly-wrapper" id="exampleModalScrollableSUBS" style="z-index: 99999;" >
+      <div class="modaly" style="margin-top: 10%;">
         <div class="modaly-header"><h3>새 물질 추가</h3></div>
         <div class="modaly-body">
           <div class="card-body">
@@ -922,7 +882,7 @@
                                     <div class="form-group">
                                        <label>Substance Name: *</label>
                                         <select  class="getsubstancelist form-control" id="getSubsname" name="getsubstancelist">
-                                            
+                                           
                                           
                                         </select>
                                     </div>
@@ -939,13 +899,28 @@
                                 
                               </div>
                               <div class="row">
-                                 <div class="col-md-6">
+                                 <div class="col-md-4">
                                     <div class="form-group">
                                        <label>CAS Number: *</label>
                                        <input readonly type="text" class="addcas form-control" name="addcas" value="" placeholder=""  />
                                     </div>
                                  </div>
-                                 <div class="col-md-6">
+                               
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                       <label>Substance Mass (g): *</label>
+                                       <input type="number" class="addsubstanceMassg form-control" name="addsubstanceMassg"  />
+                                    </div>
+                                 </div>
+                                   <div class="col-md-4">
+                                    <div class="form-group">
+                                       <label>Substance Mass (%) : *</label>
+                                       <input readonly type="number" class="addsubstanceMassPerc form-control" name="addsubstanceMassPerc"  />
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="row" style="visibility: hidden; height: 0;">
+                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>CRMs: *</label>
                                        <input readonly type="text" class="addcrm form-control" name="addcrm" />
@@ -955,27 +930,16 @@
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>ROHS: *</label>
-                                        <input readonly type="text" class="addrohs form-control" name="addrohs" />
+                                        <input readonly  type="text" class="addrohs form-control" name="addrohs" />
                                       
-                                    </div>
-                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>Substance Mass (g): *</label>
-                                       <input type="number" class="addsubstanceMassg form-control" name="addsubstanceMassg"  />
-                                    </div>
-                                 </div>
-                                   <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>Substance Mass (%) : *</label>
-                                       <input type="number" class="addsubstanceMassPerc form-control" name="addsubstanceMassPerc"  />
                                     </div>
                                  </div>
                               </div>
                            </div>
-                              <button type="button" id="addSubs" class="btn btn-primary action-button float-right" value="Submit" >제출하기</button>
+                           
                     
                      </form>
+                        <button type="button" id="addSubs" class="btn btn-dark action-button float-right" value="Submit" >제출하기</button>
                         <button type="button" id="subsmodalclose" class="btn btn-secondary action-button-close" data-dismiss="modaly-wrapper" >Close</button>
                   </div>
                </div>
@@ -1004,9 +968,9 @@
  </div>
 </div>
 
-    <!--View Data table tree Material-->
+    <!--View Data table tree subs-->
 
-      <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+   <div class="modal fade" id="exampleModalScrollableSubstances" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableSubstances" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable" role="document">
                            <div class="modal-content">
                               <div class="modal-header">
@@ -1016,94 +980,40 @@
                                  </button>
                               </div>
                               <div class="modal-body">
-                                <div class="form-group" id="formfloat">
-                     <div class="input-group" >
-                        <input type="text" class="form-control" id="myInput" style="margin: 0;" onkeyup='tableSearch()' placeholder="Search Material Name" aria-label="Search Material Name"
-                           aria-describedby="basic-addon5">
-                        <div class="input-group-append">
-                           <span class="input-group-text" id="basic-addon5"><i class="las la-search font-size-20"></i></span>
+                                <div class="row float-right">
+                                       <div class="sortaddpart" style="width: 90%;">
+                
+                       <div class="form-group" id="formfloat" style="width: 100%; margin:0;">
+                      <div class="input-group mb-3">
+                      
+                        <select  class="custom-select sortSubsSelection" id="inputGroupSelect03">
+                           <option value="" selected>Choose...</option>
+                           <option value="0">Sort by Substance Name</option>
+                           <option value="3">Sort by CRM</option>
+                            <option value="2">Sort by ROHS</option>
+                        </select>
+                           <div class="input-group-append">
+                           <span class="input-group-text" id="basic-addon5"><i class="bx bx-sort font-size-20"></i></span>
                         </div>
                      </div>
-                       
                      </div>
-                     <div class="row col-md-12" style="align-items: center;">
-                      <div class="col-md-2">
-                        <div class="table-responsive" style="    height: 310px; overflow: auto;">
-                        <table id="tree-table-1" class="table table-hover table-bordered iq-bg-white tree" style="    overflow: auto;">
-                           <thead class="bg-white" style="position: sticky; top: 0;">
-                              <tr>
-                                 <th class="breadpartname"></th>
-                              </tr>
-                           </thead>
-                           <tbody class="breadbody">
-                       
-                            
-                           </tbody>
-                        </table>
-                     </div>
-                      </div>
-                      <div class="col-md-10">
-               <div class="table-responsive">
-                    <div  class="table-wrapper"> 
-                        <table class="table-parts" id="myTable">
-                            <thead>
-                                <tr>
-                                <th >  Material Category</th>
-                                  <th>  Material Name</th>
-                                    <th>  MaterialClass ID</th>
-                                      <th>  Recycle Content</th>
-                                        <th>  Recycle Type</th>
-                                          <th>  Mass (g)</th>
-                                            <th>  Mass (%)</th>
-                                             <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="materiallist">
+                         </div>
+                                </div>
 
-                            </tbody>
-                           </table>
-                        </div>
-                         <div class="modal-footer" style="margin-top: 30%;">
-                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          
-                              </div>
-                     </div>
-                      </div>
-                     </div>
-                 
-                              </div>
-                              
-                           </div>
-                        </div>
-                     </div>
 
-      
-    <!--View Data table tree Substance-->
-
-      <div class="modal fade" id="exampleModalScrollableSubstances" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableSubstances" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable" role="document">
-                           <div class="modal-content">
-                              <div class="modal-header">
-                                 <h5 class="modal-title materialtitle" id="exampleModalScrollableTitle"></h5>
-                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                 <span aria-hidden="true">&times;</span>
-                                 </button>
-                              </div>
-                              <div class="modal-body">
                                 <div class="table-responsive">
                     <div  class="table-wrapper"> 
-                               <table class="table-parts">
+                               <table class="table-parts table-subs">
                             
                                 <tr>
-                           
+                       
                                 <th>Substance Name</th>
                                     <th>CAS No</th>
                                     <th>CRMs</th>
                                         <th>ROHS</th>
                                         <th>Substance Mass (g)</th>
-                                      
                                             <th>Substance Mass (%)</th>
-                           
+                                  <th>Action</th>
                                 </tr>
                         
                             <tbody class="substancelisttable">
@@ -1121,7 +1031,213 @@
                            </div>
                         </div>
                      </div>
+ <!--View Data table tree materials-->
+    <div class="viewMatTable modaly-wrapper" >
+      <div class="modaly">
+        <div class="modaly-body">
+          <div class="card-body">
+                <div class="form-group" id="formfloat">
+                     <div class="input-group" >
+                        <input type="text" class="form-control" id="myInput" style="margin: 0;" onkeyup='tableSearch()' placeholder="Search Material Name" aria-label="Search Material Name"
+                           aria-describedby="basic-addon5">
+                        <div class="input-group-append">
+                           <span class="input-group-text" id="basic-addon5"><i class="las la-search font-size-20"></i></span>
+                        </div>
+                     </div>
+                                </div>
 
+
+                     <div class="row col-md-12" style="align-items: center;">
+                      <div class="col-md-2">
+                        <div class="table-responsive" style="    height: 310px; overflow: auto;">
+                        <table id="tree-table-1" class="table table-hover table-bordered iq-bg-white tree" style="    overflow: auto;">
+                           <thead class="bg-white" style="position: sticky; top: 0;">
+                              <tr>
+                                 <th class="breadpartname"></th>
+                              </tr>
+                           </thead>
+                           <tbody class="breadbody">
+                       
+                            
+                           </tbody>
+                        </table>
+                     </div>
+                      </div>
+                      <div class="col-md-10">
+               <div class="table-responsive" style="overflow-x: hidden;">
+             
+                    <div  class="table-wrapper"> 
+                        <table class="table-parts" id="myTable" >
+                            <thead>
+                                <tr>
+                                <th >  Material Category</th>
+                                  <th>  Material Name</th>
+                                      <th>  Recycle Content</th>
+                                        <th>  Recycle Type</th>
+                                          <th>  Mass (g)</th>
+                                            <th>  Mass (%)</th>
+                                            <th>Proof File</th>
+                                             <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="materiallist">
+
+                            </tbody>
+                           </table>
+                        </div>
+                         <div class="modal-footer" style="margin-top: 30%;">
+                                 <button type="button" class="btn btn-secondary action-button-close" data-dismiss="modal">Close</button>
+                          
+                              </div>
+                     </div>
+                      </div>
+                     </div>
+                 
+                              
+     
+             </div>
+        </div>
+      </div>
+    </div>
+   
+
+                      <!--Edit Material-->
+  <div class="editMatmodaly modaly-wrapper" style="z-index: 92000;">
+      <div class="modaly">
+        <div class="modaly-header"><h3>Edit <span class="editMatHeader"></span></h3></div>
+        <div class="modaly-body">
+          <div class="card-body">
+                     <div class="">
+                          <form class="form"   data-toggle="validator" id="form-wizard1">
+                             <ul id="top-tab-list" class="p-0">
+                           
+                           <li id="personal">
+                              <a href="#personal">
+                              <i class="ri-user-fill"></i><span>Material Details </span>
+                              </a>
+                           </li>
+                        
+                        </ul>
+                        <!-- fieldsets -->
+                        <fieldset>
+                           <div class="form-card text-left">
+                              <div class="row">
+                                 <div class="col-7">
+                                    <h3 class="mb-4">Edit Material Details:</h3>
+                                 </div>
+                               
+                              </div>
+                              <div class="row">
+                                   <div class="col-md-6">
+                                            <label>Product Image *</label>
+                    <div class="input-group mb-4">
+                        <div class="custom-file mb-3">
+                        
+                           <input type="file" class="custom-file-input editfiles" id="customFile">
+                           <label class="custom-file-label editprodImgphld" for="customFile">Upload Product Image</label>
+                        </div>
+                     
+                     </div>
+                          
+                            </div>
+                               
+                              </div>
+                              
+                           <div class="row">
+                                           <div class="col-md-6">                      
+                                    <div class="form-group">
+                                        <label>Material Group *</label>
+                                          <input type="text" class="form-control"  id='PMmaterialGroup' placeholder="Please Enter Material Category" data-errors="Please Class ID."  >
+                                         <!-- <select class="form-control" id="PMmaterialGroup" name="PMmaterialGroup" data-errors="Please Enter Material Category."  required>
+                                       
+                                             
+                                           </select> -->
+                                      
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>  
+                   
+                                  <div class="col-md-6">                
+                                            <div class="form-group">
+                                        <label>Material Name *</label>
+                                         <input type="text" class="form-control editmaterialName"  id='PMmaterialName' placeholder="Please Enter Product Name" data-errors="Please Class ID." name="editmaterialName" >
+                                         <!-- <select class="editmaterialName form-control addmaterialName" id="PMmaterialName" name="editmaterialName" data-errors="Please Enter Product Name."  required>
+                                           
+                                           </select> -->
+                                      
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>  
+                           </div> 
+                             <!-- <div class="row" style="align-items: center; margin-top: 15px; margin-bottom: 15px;">
+                            <div class="col-md-6">
+                                  <div class="custom-control custom-checkbox custom-control-inline">
+                           <input type="checkbox" class="custom-control-input seleccheckbox" id="customCheck5" >
+                           <label class="custom-control-label" for="customCheck5">Selective Materials</label>
+                                   </div>
+                            </div>
+
+                            <div class="col-md-6">
+                              <label>Treatment </label>
+                               <select class="form-control selectiveMat" id="selectiveMat" name="selectiveMat" disabled="true">
+                                           
+                                           </select>
+                            </div>
+                           </div>  -->
+                               <div class="row">
+                                     <div class="col-md-3"> 
+                                    <div class="form-group">
+                                        <label>Recycle Type *</label>
+                                         <select name="editMaterialRecycleType" id="PMMaterialRecycleType" class="form-control" data-style="py-0">
+                                           <option>Select Option</option>
+                                       <option>Pre Consumer </option>
+                                       <option>Post Consumer </option>
+                                       <option >Pre+Post Consumer</option>
+                                       <option>Unspecified</option>
+                                    
+                                    
+                                    </select>
+                                        
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div> 
+                                <div class="col-md-3"> 
+                                    <div class="form-group">
+                                        <label>Recycle Rate (%)</label>
+                                        <input type="number" class="form-control" id='PMmaterialRecycleContent' placeholder="Enter Material Recycle Content" data-errors="Please part specs." name="editmaterialRecycleContent" required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div> 
+                           
+                                     <div class="col-md-3"> 
+                                    <div class="form-group">
+                                        <label>Material Mass (g) *</label>
+                                        <input type="number" class="form-control" id='PMmaterialMassg' placeholder="Please enter Material mass" data-errors="Please part mass." name="editmaterialMassg" required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div> 
+                                 <div class="col-md-3"> 
+                                    <div class="form-group">
+                                        <label>Material Mass (%) *</label>
+                                        <input type="number" class="form-control" id='PMMaterialMassPerc' placeholder="Please enter Material mass" data-errors="Please part mass." name="editMaterialMassPerc" required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div> 
+                            </div>
+                           </div>
+                    
+                    </fieldset>
+                        <button type="button"  id="editMat"  class="btn btn-primary btn-dark  float-right mr-3" >소재 편집</button>
+                            <button type="button" id="subsmodalclose" class="btn btn-secondary action-button-closeMat"  >Close</button>
+                     
+                      
+                   </form>
+                 </div>
+            <!-- Modal -->
+             </div>
+        </div>
+      </div>
+    </div>
                     
     <!-- Wrapper End-->
     <footer class="iq-footer">
@@ -1155,6 +1271,7 @@
 
   <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
   <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-functions.js"></script>
+    <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-storage.js"></script>
 <script  type="module">
 
 
@@ -1188,8 +1305,8 @@ const firebaseConfig = {
     <script src="./table-treeview.js"></script>
  <script  type="module" src="./parts.js" defer></script>
      <script   src="./sidemenu.js" ></script>
- 
-
+      <script   src="./sortandsearch/sortPart.js" ></script>
+    <script   src="./uploadarea/uploadfile.js" ></script>
     
     <!-- Chart Custom JavaScript -->
     <script src="./customizer.js"></script>

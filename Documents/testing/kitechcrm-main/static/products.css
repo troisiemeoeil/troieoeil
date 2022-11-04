@@ -14,6 +14,7 @@
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 600;
+  
 }
 
 .container {
@@ -252,7 +253,7 @@ option {
 .btnpr-add {
   width: fit-content;
   height: 3rem;
-  background:#87CEF5;
+  background:#11101D;
   border: none;
   color: #fff;
   display: flex;
@@ -276,7 +277,7 @@ option {
 .modaly-wrapper {
   position: fixed;
   overflow: scroll;
-  z-index: 99999;
+  z-index: 999;
   width: 100%;
   height: 100%;
   left: 0;
@@ -743,7 +744,7 @@ flex-direction: row;
 
 .button {
  
-  background: #87CEF5;
+  background: #11101D;
   color: #fff;
   -webkit-font-smoothing: antialiased;
   font-weight: bold;
@@ -779,7 +780,7 @@ flex-direction: row;
 
 .button:hover {
   color: white;
-  background: #156E9D;
+  background: #11101de2;
   text-decoration: none;
 }
 

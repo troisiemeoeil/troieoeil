@@ -19,20 +19,24 @@ const userroledisplay = document.querySelector('.userroledisplay')
 const materialtitle = document.querySelector('.modal-title')
 // modaly add
 const addmodaly = document.querySelector('.add-modaly');
-const addmodalyPartsSingle = document.querySelector('.addPartmodaly');
+const addmodalyPartsSingle = document.querySelector('.addPartMatmodaly');
 const addmodalySubssSingle = document.querySelector('.addSubsmodaly');
 const addModalyForm = document.querySelector('.add-modaly .form');
-const addModalyParts = document.querySelector('.addPartmodaly .form');
+const addModalyParts = document.querySelector('.addPartMatmodaly .form');
+const addModalyPartsClose = document.querySelector('.addPartMatmodaly');
 const editMatmodaly = document.querySelector('.editMatmodaly')
 const addModalySubs = document.querySelector('.addSubsmodaly .form');
-const closebtn = document.querySelector('.action-button-close')
+const addModalySubsClose = document.querySelector('.addSubsmodaly');
+const subsmodalclose = document.querySelector('#subsmodalclose')
+let addpartWidth = document.querySelector('.addpartWidth')
+let addpartDepth = document.querySelector('.addpartDepth')
+let addpartHeight = document.querySelector('.addpartHeight')
 
 // modaly edit
 const editmodaly = document.querySelector('.edit-modaly');
 const editmodalyForm = document.querySelector('.edit-modaly .form');
 const btnprAdd = document.querySelector('.btnpr-add');
 const tableUsers = document.querySelector('.table-users');
-const btnpraddParts = document.querySelector('.btnpr-addParts');
 // modaly view
 const viewmodaly = document.querySelector('.view-modaly');
 const viewmodalyForm = document.querySelector('.view-modaly .form');
@@ -41,14 +45,15 @@ const notadminElement = document.querySelectorAll('.notadmin')
 const usertest = document.getElementById("usertest");
 const partsName = document.querySelector('.partsName')
 const materiallist = document.querySelector('.materiallist')
-
+const closebtn = document.querySelectorAll('.action-button-close')
+const closebtnMat = document.querySelectorAll('.action-button-closeMat')
 const subslist = document.querySelector('.subslist')
+const addPartsForm = document.querySelector('#addPartsForm')
 
 // materials edit references
-
+let viewMatTable = document.querySelector('.viewMatTable')
 let PMmaterialGroup = document.getElementById('PMmaterialGroup')
 let PMmaterialName = document.getElementById('PMmaterialName')
-let PMmaterialClassID = document.querySelector('#PMmaterialClassID')
 let PMmaterialRecycleContent = document.getElementById('PMmaterialRecycleContent')
 let PMMaterialRecycleType = document.getElementById('PMMaterialRecycleType')
 let PMmaterialMassg = document.getElementById('PMmaterialMassg')
@@ -59,15 +64,26 @@ let PMmaterialMassg = document.getElementById('PMmaterialMassg')
  let addSubs = document.getElementById('addSubs')
  let getSubsname = document.getElementById('getSubsname')
  let getsubstancelist = document.querySelector('.getsubstancelist')
+  let getsubstancetype = document.querySelector('.getsubstancetype')
   let addcas = document.querySelector('.addcas')
   let addcrm = document.querySelector('.addcrm')
   let addrohs = document.querySelector('.addrohs')
   let addsubstanceMassg = document.querySelector('.addsubstanceMassg')
   let addsubstanceMassPerc = document.querySelector('.addsubstanceMassPerc')
  let substancelisttable = document.querySelector('.substancelisttable')
-  
-  
-  
+ let delSubs = document.getElementById('delSubs')
+
+ let matnameSelect = document.querySelector('#editmaterialName');
+ let reuseMat = document.querySelector('#reuseMat');
+let recycMat = document.querySelector('#recycMat');
+let recovMat = document.querySelector('#recovMat');
+ let selecreuseMat = document.querySelector('#selecreuseMat');
+let selecrecycMat = document.querySelector('#selecrecycMat');
+let selecrecovMat = document.querySelector('#selecrecovMat');
+let selectiveMat = document.querySelector('#selectiveMat')
+const addmaterialOptions = document.querySelector('#editmaterialName')
+   const editmaterialOptions = document.querySelector('.editmaterialName')
+// order and filtering 
 let id;
 
 
@@ -81,109 +97,126 @@ let id;
 // // }
 
 // Create element and render users
+document.querySelector('.loadingtitle').innerHTML = "Data is loading - Please wait... ⌛"
+  document.querySelector('.loadingtitle').style.fontWeight = "600"
+  document.querySelector('.loadingtitle').style.color = "black"
+    document.querySelector('.loadingtitle').style.marginLeft = "43%";
 const renderUser = doc => {
+
+
+
   const tr = `
-     <tr data-id='${doc.id}'>
-         <td>
-                                <div class="checkbox d-inline-block">
-                                    <input type="checkbox" class="checkbox-input" id="checkbox2">
-                                    <label for="checkbox2" class="mb-0"></label>
-                                </div>
-                            </td>
-     
+    <tr data-id='${doc.id}' style="  border-bottom: 0.5px solid grey;">
+  
      <td>${doc.data().partName}</td>
-     <td>${doc.data().partMN}</td>
-    
-        <td>${doc.data().partMassg}</td>
-         <td>${doc.data().reusedPart}</td>
-      <td>${doc.data().partMassgEA}</td>
-    
-        
+   
+      <td>${doc.data().partCode}</td>
+        <td>${doc.data().partWeight}</td>
+         <td>${doc.data().partSize}</td>
+           <td>${doc.data().reusedPart}</td>
+     <td>${doc.data().partRegisteredDate}</td>
+           <td>${doc.data().partMemo}</td>
 
 
          <td>
     <div class="btngroup">
-     <span href="#" id="btnprview" class="button btn-large viewbtn" data-toggle="modal" data-target="#exampleModalScrollable">View Materials</span>
-  
+     <span href="#" id="btnprview" class="button btn-large viewbtn" data-toggle="modal" style="margin-bottom: 22px;" data-target="#exampleModalScrollable">View Materials</span>
+   
     </div>
    
       </td>
     </tr>
   `;
-  tableUsers.insertAdjacentHTML('beforeend', tr);
+
+
+  const parttable = document.querySelector('.parttable')
+  parttable.insertAdjacentHTML('beforeend', tr);
+   document.querySelector('.loadingtitle').style.display = "none"
   
  const viewbtn = document.querySelector(`[data-id='${doc.id}'] .viewbtn`);
-  viewbtn.addEventListener('click', ()=> {
+  viewbtn.addEventListener('click', (e)=> {
+e.preventDefault()
+viewMatTable.classList.add('modaly-show');
+      const breadbody = document.querySelector('.breadbody')
+      breadbody.innerHTML = ""
+    const breadpartname = document.querySelector('.breadpartname')
+    breadpartname.innerHTML = `${doc.data().partName}`
   materialtitle.innerHTML = `${doc.data().partName}`
+  const partRef = `${doc.id}`
+  console.log(partRef)
  const materiallist = document.querySelector('.materiallist')
- materiallist.innerHTML = " ";
+ materiallist.innerHTML = "";
     //click add parts button
  const setupMaterialUI = (data) => {
     let html = '';
     data.forEach(doc=> {
       const material = doc.data();
-      console.log(material)
+
       const li = `
-  
-   
-        <td>
-                                <div class="checkbox d-inline-block">
-                                    <input type="checkbox" class="checkbox-input" id="checkbox2">
-                                    <label for="checkbox2" class="mb-0"></label>
-                                </div>
-                            </td>
-                             <td>${doc.data().materialGroup}</td>
+     <tr id='${doc.id}' data-id='${doc.id}'>
+    <td>${doc.data().materialGroup}</td>
        <td>${doc.data().materialName}</td>
-      <td>${doc.data().materialClassId}</td>
       <td>${doc.data().materialRecycleContent}</td>
       <td>${doc.data().materialRecycleType}</td>
       <td>${doc.data().materialMassg}</td>
         <td>${doc.data().materialMassPerc}</td>
-     
+
 
   <td>
-<div class="btngroup">
-     <span href="#" id="btnpmview" class="button btn-large btnpmviewSubs" data-id='${doc.id}' data-toggle="modal" data-target="#exampleModalScrollableSubstances" >View Substances</span>
- 
+    <div class="btngroup">
+     <span href="#" class="button btn-large btnpmviewSubs" data-id='${doc.id}'  data-toggle="modal" data-target="#exampleModalScrollableSubstances" style="margin-bottom: 22px;" >View Substances</span>
+   
     </div>
       </td>
     </tr>
       
       `;
       html+=li
+       const bpart = `
+       <tr data-id="1" data-parent="0" data-level="1">
+                                 <td data-column="name">${doc.data().materialName}</td>
+                              </tr>
+
+      `;
+        
+       breadbody.insertAdjacentHTML('beforeend', bpart)
     }
-
-
     )
-
     materiallist.insertAdjacentHTML('beforeend', html)
   }
   
-   db.collection('recycledparts').doc(`${doc.id}`).collection('materials').get().then(snapshot => {
+   db.collection('recycledparts').doc(`${doc.id}`).collection('materials').onSnapshot(snapshot => {
+     materiallist.innerHTML = "";
+     breadbody.innerHTML = "";
     setupMaterialUI(snapshot.docs)
     let partId = doc.id
     console.log(partId)
-    
- 
+
+
+
    let btnpmedit = document.querySelectorAll(".btnpmedit");
   let btnpmSubs = document.querySelectorAll(".btnpmSubs");
    let btnpmviewSubs = document.querySelectorAll(".btnpmviewSubs");
- for (let i = 0; i < btnpmedit.length; i++) {
-      let editData = btnpmedit[i].getAttribute("data-id");
-       let matId = btnpmSubs[i].getAttribute("data-id");
-console.log(editData)
+
+
+      
+btnpmedit.forEach((eachbtnpmedit)=>{
 // edit a material of a specific part
- btnpmedit[i].addEventListener('click', () => {
+ eachbtnpmedit.onclick = function(e) {
+  
 editMatmodaly.classList.add('modaly-show');
+  let editData = eachbtnpmedit.getAttribute("data-id");
+  console.log(editData)
+  e.preventDefault()
  db.collection('recycledparts').doc(`${partId}`).collection('materials').doc(`${editData}`).get().then((doc)=> {
   if (doc.exists) {
         console.log("Document data:", doc.id, doc.data());
          const editMatHeader = document.querySelector('.editMatHeader')
+         console.log(doc.data())
     id = doc.id;
     editMatHeader.innerHTML = ' ' + doc.data().materialName
     PMmaterialGroup.value = doc.data().materialGroup;
     PMmaterialName.value = doc.data().materialName;
-    PMmaterialClassID.value = doc.data().materialClassId;
     PMmaterialRecycleContent.value = doc.data().materialRecycleContent;
     PMMaterialRecycleType.value = doc.data().materialRecycleType;
     PMmaterialMassg.value = doc.data().materialMassg;
@@ -193,12 +226,22 @@ editMatmodaly.classList.add('modaly-show');
         console.log("No such document!");
     }
  })
- editMat.addEventListener('click', (e)=> {
+
+ editMat.onclick = function(e){
+  materiallist.innerHTML = ""
 e.preventDefault()
-  db.collection('recycledparts').doc(`${partId}`).collection('materials').doc(`${editData}`).update({
+Swal.fire({
+  title: 'Do you want to save the changes?',
+  showDenyButton: true,
+  showCancelButton: true,
+  confirmButtonText: 'Save',
+  denyButtonText: `Don't save`,
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.isConfirmed) {
+      db.collection('recycledparts').doc(`${partId}`).collection('materials').doc(`${editData}`).update({
     materialGroup: PMmaterialGroup.value,
     materialName: PMmaterialName.value,
-    materialClassId: PMmaterialClassID.value,
     materialRecycleContent: PMmaterialRecycleContent.value,
     materialRecycleType: PMMaterialRecycleType.value,
     materialMassg: PMmaterialMassg.value,
@@ -207,20 +250,75 @@ e.preventDefault()
   })
   .then(()=> {
     console.log('Document Updated Successfully!')
-  });
-   
- })
+  });  
+    Swal.fire('Saved!', '', 'success')
+  } else if (result.isDenied) {
+    Swal.fire('Changes are not saved', '', 'info')
+  }
+}) 
+} 
+}
+})
+
+//delete material specific to a part
+   let btnpmdelete = document.querySelectorAll(".btnpmdelete");
+     for (let i = 0; i < btnpmdelete.length; i++) {
  
+ btnpmdelete[i].addEventListener('click', (event) => {
+  event.preventDefault()
+      let deleteData = btnpmdelete[i].getAttribute("data-id");
+console.log(deleteData)
+Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+       let tr = document.getElementById(`${deleteData}`);
+      tr.remove(tr);
+      materiallist.innerHTML = ""
+      db.collection('recycledparts').doc(`${doc.id}`).collection('materials').doc(deleteData).delete().then(() => {
+        
+      console.log('Document succesfully deleted!');
+    })
+ 
+    .catch(err => {
+      console.log('Error removing document', err);
+    });
+    Swal.fire(
+      'Deleted!',
+      'Your file has been deleted.',
+      'success'
+    )
+  }
+})
+
+    event.stopPropagation();
+
   })
-//add a new substance to a specific material
- btnpmSubs[i].addEventListener('click', () => {
+}
+btnpmSubs.forEach((eachbtnpmSubs)=> {
+  //add a new substance to a specific material
+ eachbtnpmSubs.onclick = function (e) {
+  e.preventDefault()
+  let matId = eachbtnpmSubs.getAttribute("data-id");
+  let matWeightRef = eachbtnpmSubs.getAttribute("matWeight");
 addmodalySubssSingle.classList.add('modaly-show');
-db.collection("substances")
+  console.log(matId)
+  getsubstancetype.onchange = function(e) {
+    e.preventDefault()
+    getsubstancelist.innerHTML = ""
+    db.collection("substances").where(getsubstancetype.value,"==", "Y")
     .get()
     .then((querySnapshot) => {
+      
         querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
+            // console.log(doc.id, " => ", doc.data());
            const tm = `
       <option>${doc.data().subtanceName}</option>
   // `;
@@ -233,9 +331,11 @@ db.collection("substances")
     .catch((error) => {
         console.log("Error getting documents: ", error);
     });
+    }
 
- getSubsname.addEventListener('click', ()=> {
- db.collection("substances").where("subtanceName", "==", getsubstancelist.value).get()
+
+ getSubsname.onchange = function() {
+ db.collection("substances").where("subtanceName", "==", getsubstancelist.value).where(getsubstancetype.value, "==", "Y").get()
       .then((querySnapshot)=> {
            querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
@@ -246,161 +346,389 @@ db.collection("substances")
 
         });
       })
-      })
-addSubs.addEventListener('click', (e)=> {
+      }
+
+
+  //to be fixed
+ addsubstanceMassg.onchange = function(e){
+  e.preventDefault()
+  addsubstanceMassPerc.value = (addsubstanceMassg.value / parseFloat(matWeightRef) * 100).toFixed(2)
+}
+
+addSubs.onclick = function(e) {
   e.preventDefault();
- db.collection('recycledparts').doc(`${partId}`).collection('materials').doc(`${editData}`).collection('substances').add({
+ db.collection('recycledparts').doc(`${partId}`).collection('materials').doc(`${matId}`).collection('substances').add({
+    subidRef : '',
     substanceName: getsubstancelist.value,
     casnumber: addcas.value,
     crm: addcrm.value,
     rohs: addrohs.value,
     substanceMassg: addsubstanceMassg.value,
     substanceMassPerc: addsubstanceMassPerc.value,
- }).then(()=> {
-  console.log('Substance added Successfully')
+ })
+ .then((doc)=> {
+  const subRef = doc.id
+
+  console.log(doc.id)
+  db.collection('recycledparts').doc(`${partId}`).collection('materials').doc(`${matId}`).collection('substances').doc(doc.id).update({
+       subidRef : subRef,
+  })
+  Swal.fire(
+  'Success!',
+  'A new Substance has been added!',
+  'success'
+)
+  console.log('Substance added Successfully');
   addmodalySubssSingle.classList.remove('modaly-show');
  })
-}) 
+}}
 })
-
-  //  const btnpmviewSubs = document.querySelector(`[data-id='${doc.id}'] .viewbtn`);
- btnpmviewSubs[i].addEventListener('click', () => {
+btnpmviewSubs.forEach((eachbtnpmviewSubs)=>{
+   const subsmatId = eachbtnpmviewSubs.getAttribute("data-id");
+eachbtnpmviewSubs.onclick = function() {
 substancelisttable.innerHTML = "";
- const setupSubstanceUI = (data) => {
-    let html = '';
-    data.forEach(doc=> {
-      const substance = doc.data();
-      console.log(substance)
-      const sm = `
-      <tr id='${doc.id}' data-id='${doc.id}'>
-       <td>
-                                <div class="checkbox d-inline-block">
-                                    <input type="checkbox" class="checkbox-input" id="checkbox2">
-                                    <label for="checkbox2" class="mb-0"></label>
-                                </div>
-                            </td>
-    <td>${doc.data().substanceName}</td>
-       <td>${doc.data().casnumber}</td>
-      <td>${doc.data().crm}</td>
-      <td>${doc.data().rohs}</td>
-      <td>${doc.data().substanceMassg}</td>
-      <td>${doc.data().substanceMassPerc}</td>
-  
-    </tr>
-      `;
-      html+=sm
-    }
-
-
-    )
-
-    substancelisttable.insertAdjacentHTML('beforeend', html)
-  }
- db.collection('recycledparts').doc(`${partId}`).collection('materials').doc(`${editData}`).collection('substances').get().then(snapshot => {
-  setupSubstanceUI(snapshot.docs)
- })
-  })
-
-}
-
-//add material specific to a part
-   let btnpmdelete = document.querySelectorAll(".btnpmdelete");
-     for (let i = 0; i < btnpmdelete.length; i++) {
-      let deleteData = btnpmdelete[i].getAttribute("data-id");
- btnpmdelete[i].addEventListener('click', () => {
-
-   let tr = document.getElementById(deleteData);
  
-    
+  console.log(`${subsmatId}`)
+      //Start work here
+db.collection('recycledparts').doc(`${partId}`).collection('materials').doc(`${subsmatId}`).collection('substances').get()
+.then(query=>{
+    let data = query.docs.map(doc=>{
+        let x = doc.data()
+            return x;
+    })
+    console.log(data)
+
+    let arrUniq = [...new Map(data.map(v => [JSON.stringify([v.casnumber,v.crm,v.rohs,v.substanceMassPerc,v.substanceMassg,v.substanceName]), v])).values()]
+   
+    console.log(arrUniq)
+    buildTable(arrUniq)
+	function buildTable(arrUniq){
+
+		for (var i = 0; i < arrUniq.length; i++ ) {
+			var row = `<tr id="${arrUniq[i].subidRef}">
+     
+							<td>${arrUniq[i].substanceName}</td>
+              <td>${arrUniq[i].casnumber}</td>
+                <td>${arrUniq[i].crm}</td>
+                    <td>${arrUniq[i].rohs}</td>
+							<td>${arrUniq[i].substanceMassg}</td>
+							<td>${arrUniq[i].substanceMassPerc}</td>
+                    <td>
+   
+   
+      </td>
+             </tr>`
+			substancelisttable.innerHTML += row
+		}}
+  })
+.then(()=> {
+    const btnpartsubdelete = document.querySelectorAll('.btnpartsubdelete');
+    btnpartsubdelete.forEach((eachbtnpartsubdelete) => {
+eachbtnpartsubdelete.onclick = function(e){
+  e.preventDefault()
+  const subtRefId = eachbtnpartsubdelete.getAttribute('data-part')
+   let tr = document.getElementById(`${subtRefId}`);
+   Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
       tr.remove(tr);
-   db.collection('recycledparts').doc(`${doc.id}`).collection('materials').doc(deleteData).delete().then(() => {
+  db.collection('recycledparts').doc(`${partId}`).collection('materials').doc(`${subsmatId}`).collection('substances').doc(`${subtRefId}`).delete().then(() => {
+    
       console.log('Document succesfully deleted!');
     })
  
     .catch(err => {
       console.log('Error removing document', err);
     });
-  })
-}
-
-   })
-
-
-   //view substances specific to a material
-
-  
-  
-  })
-
-//add parts
+    Swal.fire(
+      'Deleted!',
+      'Your file has been deleted.',
+      'success'
+)}})}
+    })
+})}})})})
 
 
 
+// //add materials 
+//  const btnpraddParts = document.querySelector(`[data-id='${doc.id}'] .btnpr-addParts`);
 
-
-
-   closebtn.addEventListener('click', () =>{
-    addmodalyPartsSingle.classList.remove('modaly-show');
-   })
-
-
-
-
-
-
-
-  //add to subcollection
-  // const btnpraddParts = document.querySelector(`[data-id='${doc.id}'] .btnpr-addParts`);
- 
-  
-
-  // Click edit user
-
-  // Click delete user
-
-
-   // get subcollection data 
-  // const btnprget = document.querySelector(`[data-id='${doc.id}'] .btnpr-edit`);
-  // btnprget.addEventListener('click', () => {
-
-  // db.collection('recycledparts').doc(`${doc.id}`).collection('parts').get()
-  //   .then((querySnapshot) => {
-  //       querySnapshot.forEach((doc) => {
-  //           // doc.data() is never undefined for query doc snapshots
-  //           console.log( doc.data().partName);
-  //       });
-  //   })
-  //   .catch((error) => {
-  //       console.log("Error getting documents: ", error);
-  //   });
-  // });
-
-  
-// const btnpraddSubs = document.querySelector(`[data-id='${doc.id}'] .btnpr-addSubs`);
-// btnpraddSubs.addEventListener('click', () => {
-//   addmodalySubssSingle.classList.add('modaly-show');
-
-//   addModalySubs.addsubstanceName.value = '';
-
-//    addModalySubs.addEventListener('submit', e => {
+// btnpraddParts.onclick =  function(e)  {
 //   e.preventDefault();
-//   // console.log(doc.id, " => ", doc.data());
+//   addmodalyPartsSingle.classList.add('modaly-show');
+//   const getPMatRef = btnpraddParts.getAttribute('data-id')
+//   console.log(getPMatRef)
+//   const addmaterialOptions = document.querySelector('#selectiveMat')
+// addmaterialOptions.innerHTML = ""
+//   const addmatpartform = document.querySelector('.addmatpartform')
+//   addmatpartform.reset()
+     
+     
+//   addModalyParts.addmaterialName.value = '';
   
-//   db.collection('recycledparts').doc(`${doc.id}`).collection('materials').doc(`${doc.id}`).collection('substances').add({
-//     substanceName: addModalySubs.addsubstanceName.value,
-//     cas: addModalySubs.addcas.value,
-//     crm: addModalySubs.addcrm.value,
-//     rohs: addModalySubs.addrohs.value,
-//     substanceMassg: addModalySubs.addsubstanceMassg.value,
-//     substanceMassPerc: addModalySubs.addsubstanceMassPerc.value,
-//     materialMassPerc: addModalySubs.addmaterialMassPerc.value
-
-//   })})
+//   db.collection('recylcedparts').doc(`${doc.id}`).get().then(()=>{
+//     let partData = doc.data()
+    
+//     console.log(partData);
+    
+//      addModalyParts.addmatpartref.value = partData.partName
+//      addModalyParts.addmatpartWeight.value = partData.partWeight
 
 //   })
-//    closebtn.addEventListener('click', () =>{
-//     addmodalySubssSingle.classList.remove('modaly-show');
+// const editmaterialGroup = document.querySelector('#editmaterialGroup')
+// const PMmaterialGroup = document.querySelector('#PMmaterialGroup')
+// editmaterialGroup.innerHTML = "";
+//   var addpartsRef = db.collectionGroup('materialsdb');
+// addpartsRef
+// .get()
+//  .then(query=>{
+//     // let data = query.docs.map(doc=>{
+//     //     let x = doc.data()
+//     //         return x;
+//     // })
+//     // console.log(data)
+//         let data = query.docs.map(doc=>{
+//         let x = doc.data()
+//             return x;
+//     })
+//     console.log(data)
+//     const matHashMap = {}
+//     data = data.filter((item, _)=>{
+//       let alreadyExists = matHashMap.hasOwnProperty(item.MaterialGroup)
+//       return alreadyExists ? false: matHashMap[item.MaterialGroup] = 1
+//     })
+//     console.log(data)
+//     buildTable(data)
+// 	function buildTable(data){
+
+// 		for (var i = 0; i < data.length; i++){
+// 			var row = `
+// 							<option>${data[i].MaterialGroup}</option>
+              
+// 					  `
+// 			editmaterialGroup.innerHTML += row
+//        PMmaterialGroup.innerHTML += row
+
+// 		}}
+//   })
+
+
+
+//  editmaterialGroup.onchange = function () {
+//   const addmaterialName = document.querySelector('.addmaterialName')
+//   addmaterialName.innerHTML = "";
+// db.collection("materialsdb").where('MaterialGroup', '==', editmaterialGroup.value)
+//     .get()
+//     .then((querySnapshot) => {
+//           getsubstancelist.innerHTML = ""
+//       const to = `
+//       <option>Select an option</option>
+//   // `;
+//   addmaterialName.insertAdjacentHTML('beforeend', to)
+//         querySnapshot.forEach((doc) => {
+//             // doc.data() is never undefined for query doc snapshots
+//             // console.log(doc.id, " => ", doc.data());
+//            const tm = `
+//       <option>${doc.data().재료명}</option>
+//   // `;
+  
+//   addmaterialName.insertAdjacentHTML('beforeend', tm);
+//     editmaterialOptions.insertAdjacentHTML('beforeend', tm);
+//   // editmodalyForm.editsubstancelist.insertAdjacentHTML('beforeend', tm);
+ 
+//         });
+//     })
+//  }
+// db.collection("selectivematerials").get().then(query=>{
+//     let data = query.docs.map(doc=>{
+//         let x = doc.data()
+//             return x;
+//     })
+//     console.log(data)
+//     function getUniqueListBy(data, key) {
+//     return [...new Map(data.map(item => [item[key], item])).values()]
+// }
+// const uniqSelecMat = getUniqueListBy(data, 'selectiveMaterials')
+// console.log(uniqSelecMat)
+
+//     const to = `
+//       <option>Select an option</option>
+//   // `;
+//   addmaterialOptions.insertAdjacentHTML('beforeend', to)
+//     buildTable(uniqSelecMat)
+// 	function buildTable(uniqSelecMat){
+
+// 		for (var i = 0; i < uniqSelecMat.length; i++){
+// 			var row = `   <option>${uniqSelecMat[i].selectiveMaterials}</option>`
+
+
+//   //  const editmaterialOptions = document.querySelector('.selectiveMat')
+//   addmaterialOptions.insertAdjacentHTML('beforeend', row)
+//     editmaterialOptions.insertAdjacentHTML('beforeend', row)
+
+// 		}
+// 	}
+
+
+//   })
+
+//      const addPartmaterialMassg = document.querySelector('.addPartmaterialMassg')
+//  addPartmaterialMassg.onchange = function(e){
+//   e.preventDefault()
+//   addModalyParts.addmaterialMassPerc.value = (addModalyParts.addmaterialMassg.value / addModalyParts.addmatpartWeight.value * 100).toFixed(2)
+// }
+
+
+//  matnameSelect.onchange = function (e) {
+//     e.preventDefault()
+//   console.log(matnameSelect.value);
+//   db.collection("materialsdb").where('재료명', '==', matnameSelect.value)
+//     .get()
+//        .then((querySnapshot) => {
+//         querySnapshot.forEach((doc) => {
+//             // doc.data() is never undefined for query doc snapshots
+//             recovMat.value = doc.data().Recoverability,
+//             recycMat.value = doc.data().Recyclability,
+//             reuseMat.value = doc.data().Reusabiity
+//         });
+//     })
+// };
+//  let selectiveMat = document.getElementById("selectiveMat");
+// let seleccheckbox = document.querySelector('.seleccheckbox');
+// seleccheckbox.onclick = function() {
+//   if(seleccheckbox.checked == true) {
+// selectiveMat.removeAttribute('disabled')
+//   } else {
+//     selectiveMat.setAttribute("disabled", "disabled") 
+//   }
+// }
+
+//  selectiveMat.onchange = function () {
+
+//   console.log(matnameSelect.value);
+//   db.collection("selectivematerials").where('selectiveMaterials', '==', selectiveMat.value)
+//     .get()
+//        .then((querySnapshot) => {
+//         querySnapshot.forEach((doc) => {
+//             // doc.data() is never undefined for query doc snapshots
+//             selecrecovMat.value = doc.data().recoverability,
+//             selecrecycMat.value = doc.data().recyclability,
+//             selecreuseMat.value = doc.data().reusability
+//         });
+//     })
+// }
+ 
+
+//   const addMatPartBtn = document.querySelector('#addMatPartBtn')
+  
+//   addMatPartBtn.onclick = function (e) {
+//     e.stopPropagation()
+//     e.preventDefault()
+//     let guid = () => {
+//     let s4 = () => {
+//         return Math.floor((1 + Math.random()) * 0x10000)
+//             .toString(16)
+//             .substring(1);
+//     }
+//     //return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
+//     return s4() + s4() + s4() 
+// }
+
+
+//   // console.log(doc.id, " => ", doc.data());
+//   db.collection('recycledparts').doc(`${getPMatRef}`).collection('materials').doc(guid()).set({
+//     partRef: addModalyParts.addmatpartref.value,
+//     partRefWeight: addModalyParts.addmatpartWeight.value,
+//     materialName: addModalyParts.addmaterialName.value,
+//     materialGroup: addModalyParts.addmaterialGroup.value,
+//     materialClassId: addModalyParts.addmaterialClassID.value,
+//     materialRecycleContent: addModalyParts.addmaterialRecycleContent.value,
+//     materialRecycleType: addModalyParts.addmaterialRecycleType.value,
+//     materialMassg: addModalyParts.addmaterialMassg.value,
+//     materialMassPerc: addModalyParts.addmaterialMassPerc.value,
+//     recovMat: recovMat.value,
+//     recycMat: recycMat.value,
+//     reuseMat: reuseMat.value,
+//     selecrecovMat: selecrecovMat.value,
+//     selecrecycMat: selecrecycMat.value,
+//     selecreuseMat: selecreuseMat.value,
+//     matnameSelect: matnameSelect.value,
+//     selectiveMat: selectiveMat.value
+    
+//   })
+//   console.log('Material Added! ')
+//   Swal.fire(
+//   'Success!',
+//   'A new material was Added!',
+//   'success'
+// )
+// setTimeout(resetForm, 0);
+//  function resetForm() {
+// addModalyParts.reset();
+// }}
+//    subsmodalclose.addEventListener('click', () =>{
+//     addModalyParts.classList.remove('modaly-show');
+//     editMatmodaly.classList.remove('modaly-show');
 //    })
+// }
+
+
+//   // Click edit user
+//   const btnprEdit = document.querySelector(`[data-id='${doc.id}'] .btnpr-edit`);
+//   btnprEdit.onclick = function() {
+    
+//     editmodaly.classList.add('modaly-show');
+//     const editHeader = document.querySelector('.editheader')
+//     id = doc.id;
+//     editHeader.innerHTML = 'Edit ' + doc.data().partName
+//     editmodalyForm.editsupplierName.value = doc.data().supplierName;
+//     editmodalyForm.editpartName.value = doc.data().partName;
+//     editmodalyForm.editpartClass.value = doc.data().partCode;
+//     editmodalyForm.editpartWeight.value = doc.data().partWeight;
+//     editmodalyForm.editpartSize.value = doc.data().partSize;
+//     editmodalyForm.editreusedPart.value = doc.data().reusedPart;
+//      editmodalyForm.editpartregisteredDate.value = doc.data().partRegisteredDate;
+//     editmodalyForm.editMemo.value = doc.data().partMemo;
+//   }
+
+//   // Click delete user
+//   const btnprDelete = document.querySelector(`[data-id='${doc.id}'] .btnpr-delete`);
+//   btnprDelete.onclick = function(e) {
+//     e.preventDefault()
+//     Swal.fire({
+//         title: 'Are you sure?',
+//         text: "You won't be able to revert this!",
+//         icon: 'warning',
+//         showCancelButton: true,
+//         confirmButtonColor: '#3085d6',
+//         cancelButtonColor: '#d33',
+//         confirmButtonText: 'Yes, delete it!'
+// }).then((result) => {
+//   if (result.isConfirmed) {
+//         db.collection('recycledparts').doc(`${doc.id}`).delete().then(() => {
+//       console.log('Document succesfully deleted!');
+//     }).catch(err => {
+//       console.log('Error removing document', err);
+//     });
+    
+//     Swal.fire(
+//       'Deleted!',
+//       'Your file has been deleted.',
+//       'success'
+//     )
+//   }
+// })
+
+//   }
+
+
 
 }
  
@@ -410,23 +738,108 @@ substancelisttable.innerHTML = "";
 
 
 // Click add user button
-btnprAdd.addEventListener('click', () => {
-  addmodaly.classList.add('modaly-show');
+// btnprAdd.onclick = function() {
+//   addmodaly.classList.add('modaly-show');
 
-  addModalyForm.addpartName.value = '';
-  addModalyForm.addpartNumber.value = '';
-  addModalyForm.addpartSpecs.value = '';
-  addModalyForm.addpartMassgEA.value = '';
-  addModalyForm.addpartMassg.value = '';
-  addModalyForm.addpartMassPerc.value = '';
-  addModalyForm.addreusedPart.value = '';
-  addModalyForm.addsupplierInfo.value = '';
-    addModalyForm.substancelist.value = '';
+//   addModalyForm.addpartName.value = '';
+//   addModalyForm.addpartClass.value = '';
+//   addModalyForm.addpartWeight.value = '';
+//   addModalyForm.addreusedPart.value = '';
+//     addModalyForm.addpartregisteredDate.value = '';
+//   addModalyForm.addMemo.value = '';
 
 
+
+//         // Get the form and file field
+
+// 		/**
+// 		 * Log the uploaded file to the console
+// 		 * @param {event} Event The file loaded event
+// 		 */
+// 		function logFile (event) {
+//       event.preventDefault()
+// 			let str = event.target.result;
+// 			let json = JSON.parse(str);
+// 			console.log('string', str);
+// 			console.log('json', json);
+// for(let i = 0; i < json.length; i++) {
+//     let obj = json[i];
+
+//        db.collection('recycledparts').doc().set({
+   
+//             partName: obj.partName,
+//             partWeight: obj.partWeight,
+//             partSize: obj.partSize,
+//             partRegisteredDate: obj.partRegisteredDate,
+//             supplierName	: obj.supplierName,
+//             partMemo: obj.partMemo,
+//             reusedPart: obj.reusedPart,
+//             partCode: obj.partCode
+        
+       
+//         }, {merge: true}) .then(()=> {
+//       console.log("Documents Added!")
+//     });
+// }
+
+
+// 		}
+
+// 		/**
+// 		 * Handle submit events
+// 		 * @param  {Event} event The event object
+// 		 */
+// 		function handleSubmit (event) {
+
+
+// 			// Stop the form from reloading the page
+// 			event.preventDefault();
+
+//       let timerInterval
+// Swal.fire({
+//    icon: 'info',
+//   html: 'Files being Uploaded...',
+//   timer: 3000,
+//   timerProgressBar: true,
+//   didOpen: () => {
+//     Swal.showLoading()
+   
+   
+//   },
+//   willClose: () => {
+//     clearInterval(timerInterval)
+//   }
+// }).then((result) => {
+//   /* Read more about handling dismissals below */
+//   if (result.dismiss === Swal.DismissReason.timer) {
+//     console.log('I was closed by the timer')
+//   }
+// })
+
+// 			// If there's no file, do nothing
+// 			if (!file.value.length) return;
+
+// 			// Create a new FileReader() object
+// 			let reader = new FileReader();
+
+// 			// Setup the callback event to run when the file is read
+// 			reader.onload = logFile;
+
+// 			// Read the file
+// 			reader.readAsText(file.files[0]);
+
+
+    
+// 		}
+
+
+// 		let form = document.querySelector('#upload');
+// 		let file = document.querySelector('.filey');
+// 		// Listen for submit events
+// 		form.addEventListener('submit', handleSubmit);
   
   
-});
+// };
 
 // User click anyware outside the modaly
 window.addEventListener('click', e => {
@@ -443,10 +856,18 @@ window.addEventListener('click', e => {
    if(e.target === editMatmodaly) {
     editMatmodaly.classList.remove('modaly-show');
   }
-   if(e.target === addmodalyPartsSingle) {
+   if(e.target === addmodalySubssSingle) {
+    addmodalySubssSingle.classList.remove('modaly-show');
+  }
+     if(e.target === addmodalyPartsSingle) {
     addmodalyPartsSingle.classList.remove('modaly-show');
   }
- 
+     if(e.target === editMatmodaly ) {
+    editMatmodaly.classList.remove('modaly-show');
+  }
+      if(e.target === viewMatTable ) {
+    viewMatTable.classList.remove('modaly-show');
+  }
 });
 
 
@@ -475,47 +896,81 @@ db.collection('recycledparts').onSnapshot(snapshot => {
   })
 })
 
+   auth.onAuthStateChanged(user => {
 
+    if(user) {
+      
+ const userRef = db.collection('users').where('userID', '==', user.uid).get()
+
+userRef.then((querySnapshot) => {
+   querySnapshot.forEach((doc) => {
+const supplierNameData = document.querySelector('#addsupplierName')
+supplierNameData.value = doc.data().userCompanyname
+   })})}})
 
 
 // Click submit in add modaly
-addModalyForm.addEventListener('submit', e => {
+addPartsForm.addEventListener('click', e => {
   e.preventDefault();
   db.collection('recycledparts').add({
+     supplierName: addModalyForm.addsupplierName.value,
    partName: addModalyForm.addpartName.value,
-    partNumber: addModalyForm.addpartNumber.value,
-    partSpecs: addModalyForm.addpartSpecs.value,
-    partMassgEA: addModalyForm.addpartMassgEA.value,
-    partMassg: addModalyForm.addpartMassg.value,
-    partMassPerc: addModalyForm.addpartMassPerc.value,
+    partCode: document.querySelector('#addClass').value,
+    partWeight: addModalyForm.addpartWeight.value,
+    partSize: `${addpartWidth.value} x ${addpartDepth.value} x ${addpartHeight.value}`,
     reusedPart: addModalyForm.addreusedPart.value,
-    supplierInfo: addModalyForm.addsupplierInfo.value,
-    substancelist: addModalyForm.substancelist.value,
-  });
-  modalyWrapper.classList.remove('modaly-show');
+    partRegisteredDate: addModalyForm.addpartregisteredDate.value,
+    partMemo: addModalyForm.addMemo.value
+    
+  })
+Swal.fire(
+  'Good job!',
+  'New part is added successfully!',
+  'success'
+)
 });
-
-
+const editsupplierName = document.querySelector('#editsupplierName')
+const editpartName = document.querySelector('#editpartName')
+const editpartWeight = document.querySelector('#editpartWeight')
+const editpartClass = document.querySelector('#editpartClass')
+const editpartSize = document.querySelector('#editpartSize')
+const editreusedPart = document.querySelector('#editreusedPart')
+const editpartregisteredDate = document.querySelector('#editpartregisteredDate')
+const editMemo = document.querySelector('#editMemo')
+const editPart = document.querySelector('#editPart')
+// document.querySelector('#addpartName').setAttribute("disabled","disabled")
 // Click submit in edit modaly
-editmodalyForm.addEventListener('submit', e => {
+editPart.onclick = function(e) {
   e.preventDefault();
-  db.collection('recycledparts').doc(id).update({
- partName: editmodalyForm.editpartName.value,
-    partNumber: editmodalyForm.editpartNumber.value,
-    partSpecs: editmodalyForm.editpartSpecs.value,
-    partMassgEA: editmodalyForm.editpartMassgEA.value,
-    partMassg: editmodalyForm.editpartMassg.value,
-    partMassPerc: editmodalyForm.editpartMassPerc.value,
-    reusedPart: editmodalyForm.editreusedPart.value,
-    supplierInfo: editmodalyForm.editsupplierInfo.value,
-    substancelist: editmodalyForm.editsubstancelist.value,
+  Swal.fire({
+  title: 'Do you want to save the changes?',
+  showDenyButton: true,
+  showCancelButton: true,
+  confirmButtonText: 'Save',
+  denyButtonText: `Don't save`,
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.isConfirmed) {
+     db.collection('recycledparts').doc(id).update({
+     supplierName: editsupplierName.value,
+    partName: editpartName.value,
+    partCode: editpartClass.value,
+    partWeight: parseFloat(editpartWeight.value),
+    partSize: editpartSize.value,
+    reusedPart: editreusedPart.value,
+    partRegisteredDate: editpartregisteredDate.value,
+    partMemo: editMemo.value
   });
-  editmodaly.classList.remove('modaly-show');
-  });
+    Swal.fire('Saved!', '', 'success')
+  } else if (result.isDenied) {
+    Swal.fire('Changes are not saved', '', 'info')
+  }
+})
+ 
+  };
 
 
 
-  
     //click add subsctance button
    
  
@@ -579,11 +1034,11 @@ const editUI = (user) => {
     adminElement.forEach(item => item.style.display = 'none');
     notadminElement.forEach(item => item.style.display = 'flex');
     userTitleCard.innerHTML = 'Part Supplier'
-    lastsignindata = firebase.auth().currentUser.metadata.lastSignInTime
-    console.log(lastsignindata)
+    // lastsignindata = firebase.auth().currentUser.metadata.lastSignInTime
+    // console.log(lastsignindata)
     // notadminElement.style.display = 'flex'
-    userTitleCard.innerHTML = 'Viewer'
-     lastsignin.innerHTML = ''
+   
+    //  lastsignin.innerHTML = ''
 
     }
 
@@ -593,30 +1048,30 @@ const editUI = (user) => {
   }
 }
 
+const arr = ['one', 'two', 'one', 'one', 'two', 'three'];
+
+const count = arr.reduce((accumulator, value) => {
+  return {...accumulator, [value]: (accumulator[value] || 0) + 1};
+}, {});
+
+// 👇️ {one: 3, two: 2, three: 1}
+console.log(count);
 
 
 
+closebtn.forEach((eachClose)=> {
+  eachClose.addEventListener('click', () =>{
+    addmodaly.classList.remove('modaly-show');
+    addModalyPartsClose.classList.remove('modaly-show');
+    editmodaly.classList.remove('modaly-show');
+    addModalySubsClose.classList.remove('modaly-show');
+    viewMatTable.classList.remove('modaly-show');
+   })
+})
 
 
- db.collection("substances")
-    .get()
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-           const tm = `
-      <option>${doc.data().subtanceName}</option>
-  `;
-  addModalyForm.substancelist.insertAdjacentHTML('beforeend', tm);
-  editmodalyForm.editsubstancelist.insertAdjacentHTML('beforeend', tm);
- 
-        });
-    })
-    .catch((error) => {
-        console.log("Error getting documents: ", error);
-    });
-
-
-    closebtn.addEventListener('click', ()=> {
-      editMatmodaly.classList.remove('modaly-show');
-    })
+closebtnMat.forEach((eachCloseMat)=> {
+  eachCloseMat.addEventListener('click', () =>{
+    editMatmodaly.classList.remove('modaly-show');
+   })
+})

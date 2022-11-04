@@ -8,6 +8,7 @@
       <!-- Favicon -->
      
  <link rel="stylesheet" href="./products.css" />
+  <link rel="stylesheet" href="./parts.css" />
  <link rel="stylesheet" href="./addbtn.css" />
    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
       <link rel="stylesheet" href="./backend.css" />
@@ -18,7 +19,7 @@
         <!-- <script type="module" src="https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js"></script>
    
     <script type="module" src="https://www.gstatic.com/firebasejs/9.9.1/firebase-auth.js" defer ></script> -->
-    <script src="https://unpkg.com/feather-icons"></script>
+  
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
   <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -26,12 +27,12 @@
   <script type="module" src="https://www.gstatic.com/firebasejs/9.9.1/firebase-firestore.js"></script>
   
       </head>
-  <body class="">
+  <body class="" style="overflow-y: hidden;">
     <!-- loader Start -->
    
     <!-- loader END -->
     <!-- Wrapper Start -->
-     <div class="sidebar">
+      <div class="sidebar">
     <div class="logo-details">
      
         <div class="logo_name">KitechCRM</div>
@@ -59,39 +60,55 @@
       </li>
       <li>
        <a class="adminelement" href="./listofproducts" style="display: none;">
-         <i  class='bx bx-user' ></i>
+       
+              <i class='bx bxs-cube-alt'></i>
          <span class="links_name">제품목록</span>
        </a>
        <span class="tooltip">제품목록</span>
      </li>
       <li>
        <a class="notadmin" href="./parts" style="display: none;">
-         <i  class='bx bx-user' ></i>
-         <span class="links_name">제품목록</span>
-       </a>
-       <span class="tooltip">제품목록</span>
-     </li>
-       <li>
-       <a class="adminelement" href="./partslist" style="display: none;">
-         <i  class='bx bx-user' ></i>
+    <i class='bx bxs-component' ></i>
          <span class="links_name">부품목록</span>
        </a>
        <span class="tooltip">부품목록</span>
      </li>
+       <li>
+       <a class="adminelement" href="./partslist" style="display: none;">
+ <i class='bx bxs-component' ></i>
+         <span class="links_name">부품목록</span>
+       </a>
+       <span class="tooltip">부품목록</span>
+     </li>
+     <li>
+       <a class="notadmin" href="./materialsdb" style="display: none;">
+ <i class='bx bx-pie-chart-alt-2' ></i>
+         <span class="links_name">소재목록</span>
+       </a>
+       <span class="tooltip">소재목록</span>
+     </li>
+     <li>
+       <a class="notadmin" href="./substances" style="display: none;">
+  <i class='bx bx-dna' ></i>
+         <span class="links_name">물질목록</span>
+       </a>
+       <span class="tooltip">물질목록</span>
+     </li>
           <li>
        <a class="adminelement" href="#" style="display: none;">
-         <i class='bx bx-pie-chart-alt-2' ></i>
+        <i class='bx bx-bell' ></i>
          <span class="links_name">공지사항</span>
        </a>
        <span class="tooltip">공지사항</span>
      </li>
      <li>
        <a class="notadmin" href="#" style="display: none;">
-         <i class='bx bx-pie-chart-alt-2' ></i>
+       <i class='bx bx-bell' ></i>
          <span class="links_name">공지사항</span>
        </a>
        <span class="tooltip">공지사항</span>
      </li>
+        
     
      <li class="profile" style="margin-bottom: 30px; background:#11101D;">
          <div class="profile-details">
@@ -99,9 +116,11 @@
            <div class="name_job">
              <div class="name">Logout</div>
              <div class="job">2022 - 2023</div>
+               
            </div>
          </div>
         <a href="/sessionLogout"> <i class='bx bx-log-out' id="log_out" ></i> </a>
+       
      </li>
     </ul>
   </div>
@@ -214,7 +233,25 @@
                         <p class="mb-0">등록된 제품 목록을 보여줍니다.</p>
                     </div>
                     <button class="btnpr btnpr-add adminelement" style="display: none;"><div class="addnewproductbtnpr">신규 제품 등록</div></button>
+                    
                 </div>
+                       <div class="sortaddpart">
+                
+                       <div class="form-group" id="formfloat">
+                      <div class="input-group mb-3">
+                      
+                        <select  class="custom-select sortProdSelection" id="inputGroupSelect03">
+                           <option value="" selected>Sort by...</option>
+                           <option value="2">Sort by  Model name</option>
+                           <option value="5">Sort by Registration date</option>
+                            <option value="6">Sort by Registration status</option>
+                        </select>
+                           <div class="input-group-append">
+                           <span class="input-group-text" id="basic-addon5"><i class="bx bx-sort font-size-20"></i></span>
+                        </div>
+                     </div>
+                     </div>
+                         </div>
             </div>
 
 
@@ -229,19 +266,17 @@
             
         <!--Here starts the form-->
         
-        
+
+
  <div class="tabledata">
    
-    <div class="table-wrapper table-responsive rounded mb-3" style="overflow-x: hidden; height: 850px;
+    <div class="table-wrapper table-responsive rounded mb-3" style="overflow-x: hidden; height: 700px;
     overflow-y: scroll;">
           <div class="loadingtitle"></div>
-      <table class="table-users  mb-0 " >
+      <table class="table-users  mb-0 prod-table" >
     <thead class="bg-white text-uppercase" style="position: sticky; top: 0; z-index: 1;">
   <tr class="ligth ligth-data">
-            <th ><svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 20 20">
-  <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"/>
-  <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
-</svg></th>
+         <th >Product Image</th>
              <th >Product Category</th>
           <th>Product Name</th>
           <th>Model Name</th>
@@ -270,8 +305,8 @@
         <div class="modaly-header"></div>
         <div class="modaly-body">
           <div class="card-body">
-                     <div class="">
-                        <form class="form"   autocomplete="off"  data-toggle="validator" id="form-wizard1">
+                     <div >
+                        <form class="form" autocomplete="off"  data-toggle="validator" id="form-wizard1">
                              <ul id="top-tab-list" class="p-0">
                            
                            <li id="personal">
@@ -282,11 +317,7 @@
                        
                         
                         </ul>
-                        <!-- fieldsets -->
-                     
-                        <fieldset id="personal">
-                           <div class="form-card text-left">
-                              <div class="row">
+                           <div class="row">
                                  <div class="col-5">
                                     <h3 class="mb-4">Enter Product Identification:</h3>
                                  </div>
@@ -295,10 +326,28 @@
                                       
                                  </div>
                               </div>
-                                 <div class="col-md-12"> 
-    <div class="form-group">
+                      <!-- fieldsets -->
+                         
+                        <fieldset id="personal">
+                    
+                          
+                        <div class="row">
+                                 <div class="col-md-6">
+                                            <label>Product Image *</label>
+                    <div class="input-group mb-4">
+                        <div class="custom-file mb-3">
+                        
+                           <input type="file" class="custom-file-input files" id="customFile">
+                           <label class="custom-file-label prodImgphld" for="customFile">Upload Product Image</label>
+                        </div>
+                     
+                     </div>
+                          
+                            </div>
+                                  <div class="col-md-6"> 
+                               <div class="form-group">
                                         <label>Product Category *</label>
-                                         <select class="partsName form-control"  id="editproductCategory" name="productCategory" data-errors="Please Enter Product Category."  >
+                                         <select class="partsName form-control"  id="addproductCategory" name="productCategory" data-errors="Please Enter Product Category."  required>
                                         
                                         
 <option>에어컨</option>
@@ -339,49 +388,55 @@
                                         <div class="help-block with-errors"></div>
                                     </div>
                                  </div>
+                                </div>
+                         
+        
+                           
+                               
                                      <div class="row">
                                             <div class="col-md-6">  <div class="form-group">
                                         <label>Product Name *</label>
-                                        <input type="text" class="form-control" id='editproductName' placeholder="Enter Product Name" data-errors="Please Enter Product Name." name="productName" >
+                                        <input type="text" class="form-control" id='addproductName' placeholder="Enter Product Name" data-errors="Please Enter Product Name." name="productName" required >
                                         <div class="help-block with-errors"></div>
                                     </div>   </div>                      
                                        <div class="col-md-6">     <div class="form-group">
                                         <label>Product Model Name *</label>
-                                        <input type="text" class="form-control" id='editproductMN' placeholder="Enter Product Model Name" data-errors="Please Enter Product Model Name." name="productMN" >
+                                        <input type="text" class="form-control" id='addproductMN' placeholder="Enter Product Model Name" data-errors="Please Enter Product Model Name." name="productMN" required>
                                         <div class="help-block with-errors"></div>
                                     </div> </div>
                                  
                                 </div>    
-                                <div class="col-md-12">
+                                <div class="row">
+                                      <div class="col-md-6">
                                        <div class="form-group">
                                         <label>Product Weight (g) *</label>
-                                        <input type="number" step=".01" class="form-control" id='editproductWeight'placeholder="Enter Code" data-errors="Please product weight." name="productWeight" >
+                                        <input type="number" step=".01" class="form-control" id='addproductWeight'placeholder="Enter Code" data-errors="Please product weight." name="productWeight" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
-                                </div> 
-                                    <div class="row " >
-                                <div class="col-md-12">
-                                </div>  
-                                                     
-<!--                              
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Image</label>
-                                        <input type="file" class="form-control image-file" style="height: fit-content;" name="pic" accept="image/*">
-                                    </div>
-                                </div> -->
-                            </div>  
-                              <div class="row">
-                                  <div class="col-md-12">
+                              </div>
+                                  <div class="col-md-6">
                                     <div class="form-group">
                                      <label>Product Size</label>
-                                        <input type="text" class="form-control" id='editproductSize'placeholder="Please Enter Product Size. (mm x mm x mm)" data-errors="Please Enter Product Size." name="productSize" >
-                                        <div class="help-block with-errors"></div>
+                                         <div class="input-group mb-4" style="align-items: center;">
+                        
+                        <input type="text" class="form-control addprodWidth" placeholder="Width" aria-label="Width"
+                           aria-describedby="basic-addon4" required>
+                    <i class="las la-times" style="margin: 4px;"></i>
+                                <input type="text" class="form-control addprodDepth" placeholder="Depth" aria-label="Depth"
+                           aria-describedby="basic-addon4" required>
+                   <i class="las la-times" style="margin: 4px;"></i>
+                                <input type="text" class="form-control addprodHeight" placeholder="Height" aria-label="notification"
+                           aria-describedby="basic-addon4" required>
+                           <div class="input-group-prepend">
+                           <span class="input-group-text" id="basic-addon4" style="height: 2.8em;
+                              border-radius: 0 10px 10px 0px;"><i class="las la-ruler-combined  font-size-28"></i></span>
+                        </div>
+                     </div>
                                     </div>
                                 </div>
-                               
-                              </div>
-                           </div>
+                                </div>
+                           
+                     
                       
                         
                         
@@ -393,7 +448,7 @@
                                 <div class="col-md-6"> 
                                     <div class="form-group">
                                         <label>Registered Date</label>
-                                        <input type="date" class="form-control" id='editregisteredDate' placeholder="Enter the registration date." data-errors="Please the right registration date." name="registeredDate" >
+                                        <input type="date" style=" font-size: 15px;" class="form-control" id='addregisteredDate' placeholder="Enter the registration date." data-errors="Please the right registration date." name="registeredDate" required >
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div> 
@@ -403,7 +458,7 @@
                                     
                                   <div class="form-group">
                                         <label>Product Registration Status</label>
-                                         <select class="productStatus form-control" id="editproductStatus" name="productStatus" data-errors="Please Enter Product Registration Status."  >
+                                         <select class="productStatus form-control" id="addproductStatus" name="productStatus" data-errors="Please Enter Product Registration Status." required >
                                             <option value="Complete">Complete</option>
                                             <option value="Processing">Processing</option>
                                             <option value="Ready">Ready</option>
@@ -414,40 +469,22 @@
                                 </div> 
                                  </div>
                                      <div class="row">
-                                  <div class="col-md-12">
+                                  <div class="col-md-6">
                                     <div class="form-group">
                                      <label>Memo</label>
-                                        <input type="text" class="form-control" id='editMemo' placeholder="Please Enter Memo." data-errors="Please Enter Memo." name="memo" >
+                                        <input type="text" class="form-control" id='addmemo' placeholder="Please Enter Memo." data-errors="Please Enter Memo." name="memo" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
-                               
+                              
                               </div>
-                                
-                                
-                                 
-
-                            
-
-
-                                  
                                </div>
-                           </div>
-                         <div class="col-11">
-                                        <div class="buttonaddProducts addProduct" id="editForm">
-                                <div class="content">
-                                    <i class="bx bxs-edit"></i>
-                                    <span class="buttonaddProducts-text">Add New Product</span>
-                                </div>
-                            </div>
-                                      
-                                 </div>
-                               
-                    
-               
-                         
+                          
                         </fieldset>
                       
+                   <button type="button" class="btn btn-secondary action-button-close" data-dismiss="modaly">Close</button>
+                   <button type="submit" id="addProduct" class="btn btn-primary btn-dark float-right mr-3">Add Product</button>
+                                
                    </form>
                  </div>
             <!-- Modal -->
@@ -458,30 +495,12 @@
 
     <!-- Edit modaly -->
     <div class="edit-modaly modaly-wrapper">
-      <div class="modaly">
-        
-    <div class="toast">
-        <div class="toast-content">
-            <i class="fas fa-solid fa-check check"></i>
-
-            <div class="message">
-                <span class="text text-1">Success</span>
-                <span class="text text-2">Your changes has been saved</span>
-            </div>
-        </div>
-        <i class="fa-solid fa-xmark close"></i>
-
-        <div class="progress"></div>
-    </div>
-        <div class="modaly-header"></div>
+      <div class="modaly" style="top:7%">
         <div class="modaly-body">
              <div class="card-body">
-                <!-- here starts the edit product data form -->
-                   <div class="card">
-               
                   <div class="card-body">
-                   
-                     <ul class="nav nav-pills mb-3 nav-fill" id="pills-tab-1" role="tablist">
+                     <ul class="nav nav-pills mb-3 nav-fill" id="pills-tab-1" role="tablist" style="    width: 50%;
+    margin-left: 26%;">
                         <li class="nav-item">
                            <a class="nav-link active" id="pills-home-tab-fill" data-toggle="pill" href="#pills-home-fill" role="tab" aria-controls="pills-home" aria-selected="true">  <span class="editheader"></span></a>
                         </li>
@@ -498,19 +517,24 @@
                         <fieldset >
                            <div class="form-card text-left">
                        
-                              <!-- class="row adminelement" style="display: none;" -->
-                              <div class="row" class="row">
-                              
-                                 <!-- <div class="col-5">
-                                    <h2 class="steps">Step 1 - 4</h2>
-                                 </div> -->
-                              </div>
+                                     
                               <div class="row">
                                  
                           <div class="row">
-                            
+                                <div class="col-md-6">
+                                            <label>Product Image *</label>
+                    <div class="input-group mb-4">
+                        <div class="custom-file mb-3">
+                        
+                           <input type="file" class="custom-file-input editfiles" id="customFile">
+                           <label class="custom-file-label editprodImgphld" for="customFile">Upload Product Image</label>
+                        </div>
+                     
+                     </div>
+                          
+                            </div>
                                
-                                   <div class="col-md-12">                      
+                                   <div class="col-md-6">                      
                                     <div class="form-group">
                                         <label>Product Category *</label>
                                          <select class="editpartsName form-control" id="editproductCategory" name="productCategory" data-errors="Please Enter Product Category."  required>
@@ -555,7 +579,7 @@
                                 <div class="col-md-6">                      
                                     <div class="form-group">
                                         <label>Product Name *</label>
-                                        <input type="text" class="form-control" id='editproductName' placeholder="Enter Product Name" data-errors="Please Enter Product Name." name="productName" required>
+                                        <input readonly type="text" class="form-control" id='editproductName' placeholder="Enter Product Name" data-errors="Please Enter Product Name." name="productName" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>    
@@ -577,19 +601,19 @@
                                     <div class="col-md-6"> 
                                     <div class="form-group">
                                         <label>Product Size (mm x mm x mm)</label>
-                                        <input type="text" class="form-control" id='editproductSize' placeholder="Enter Product Size (mm x mm x mm)" data-errors="Enter Product Size (mm x mm x mm)" name="editproductSize" required>
+                                        <input type="text" class="form-control" id='editproductSize' placeholder="Enter Product Size (Width x Depth x Height)" data-errors="Enter Product Size (Width x Depth x Height)" name="editproductSize" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div> 
-                                   <div class="col-md-12">
+                                   <div class="col-md-6">
                                     <div class="form-group">
                                      <label>Registration Date</label>
-                                        <input type="date" class="form-control" id='editregisteredDate'placeholder="Enter Registration Date" data-errors="Please Registration Date." name="editregisteredDate" required>
+                                        <input type="date" style=" font-size: 15px;" class="form-control" id='editregisteredDate'placeholder="Enter Registration Date" data-errors="Please Registration Date." name="editregisteredDate" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
 
-                                  <div class="col-md-12"> 
+                                     <div class="col-md-6"> 
                                         
                                   <div class="form-group">
                                         <label>Registration Status</label>
@@ -633,12 +657,8 @@
                             </div> -->
 
                         </fieldset>
-                         <div class="buttoni" id="editForm">
-                                <div class="content">
-                                    <i class="bx bxs-edit"></i>
-                                    <span class="buttoni-text">Edit Product</span>
-                                </div>
-                            </div>
+                       <button type="button" class="btn btn-secondary action-button-close" data-dismiss="modaly">Close</button>
+      <button  id="edit" class="btn btn-primary btn-dark editFormProd  float-right mr-3"  >Edit Product</button>
                    </form>
                  </div>
                         </div>
@@ -648,7 +668,7 @@
                           <!--here ends the adding parts entry form for the specific product-->
                      </div>
                   </div>
-               </div>
+             
                   <!-- here ends the edit product data form -->
             <!-- Modal -->
              </div>
@@ -675,7 +695,7 @@
                       
                             <li id="personal">
                               <a href="javascript:void();">
-                              <i class="ri-user-fill"></i><span>Add New Part</span>
+                              <i class="ri-user-fill"></i><span>제품 내 부품 등록하기</span>
                               </a>
                            </li>
                         </ul>
@@ -693,7 +713,7 @@
                                      <label>부품사</label>
                                
                                       <select  class="supplierName form-control" name="supplierName" id="supplierName"  data-style="py-0">
-                                      
+                                      <option value="" selected>Select an option</option>
                                      
                                     </select>
                                         
@@ -706,10 +726,8 @@
                                      <label>부품명</label>
                                
                                       <select  class="partname form-control" name="partname" id="partname"  data-style="py-0">
-                                     <option value="--" selected>Select a Part</option>
-                                     <div class="partname">
-                                         
-                                     </div>
+                                    
+                                    
                                     </select>
                                         
                                         <div class="help-block with-errors"></div>
@@ -733,7 +751,14 @@
                                     </div>
                                 </div> 
                                 <div class="col-md-2">
-                                    <button type="button" class="btn btn-primary btn-light float-left  mr-3 getPPdata" style="  margin-top: 10%;  background-color: lightblue"> Get Part Information </button>
+                                    <nav class="navbary" style="    margin-top: 35px;">
+	
+                     <a href="#" class="navbary__link">
+                        <span class=" getPPdata" ><i class='ri-cloud-line' style="color: white; font-size: 15px;" ></i></span>
+                        <span class="navbary__label">Fetch Data</span>
+                     </a>
+                  </nav>
+
                                 </div>
                                      
                                 </div> 
@@ -746,7 +771,7 @@
                                   <div class="col-md-12" style="visibility: hidden; height: 0;">
                                     <div class="form-group">
                                         <label>Part id</label>
-                                        <input readonly type="hidden" class="form-control"  id='partId' placeholder="Enter Part Number" data-errors="Please Part number." name="addpartNumber" required>
+                                        <input readonly type="hidden" class="form-control"  id='partId' placeholder="---" data-errors="---" name="addpartNumber" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div> 
@@ -755,38 +780,36 @@
                                    <div class="col-md-4"> 
                                     <div class="form-group">
                                         <label>부품 크기</label>
-                                        <input readonly type="text" class="form-control" id='partSize' placeholder="Please part mass" data-errors="Please part mass." name="addpartMassgEA" required>
+                                        <input readonly type="text" class="form-control" id='partSize' placeholder="---" data-errors="---" name="addpartMassgEA" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div> 
                               <div class="col-md-2"> 
                                     <div class="form-group">
                                         <label>부품중량 *</label>
-                                        <input readonly type="number" class="form-control" id='partWeight'placeholder="Please part mass" data-errors="Please part mass." name="addpartMassg" required>
+                                        <input readonly type="number" class="form-control" id='partWeight'placeholder="---" data-errors="---" name="addpartMassg" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div> 
                                  <div class="col-md-2"> 
                                     <div class="form-group">
                                         <label>등록일자</label>
-                                        <input readonly type="date" class="form-control" id='partRegisteredDate'placeholder="Please part mass" data-errors="Please part mass." name="addpartMassPerc" required>
+                                        <input readonly type="date" class="form-control" id='partRegisteredDate'placeholder="---" data-errors="---" style=" font-size: 15px;" name="addpartMassPerc" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div> 
-                        
-                           
-                            
                                 <div class="col-md-4">
                                     <div class="form-group">
                                      <label>메모</label>
-                                        <input readonly type="text" class="form-control" id='companyName' placeholder="Enter Code" data-errors="Please Enter Code." name="addsupplierInfo" required>
+                                        <input readonly type="text" class="form-control" id='companyName' placeholder="---" data-errors="---" name="addsupplierInfo" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
+                                
                        </div>
 
               
-                                       <div class="buttonaddParts addPart" id="editForm">
+                                       <div class="buttonaddParts addPart" style="display: none;" id="editForm">
                                 <div class="content">
                                     <i class="bx bxs-edit"></i>
                                     <span class="buttonaddParts-text">Add Part to Product</span>
@@ -795,7 +818,7 @@
                         </fieldset>
                         
                      </form>
-                     
+<!--                      
                                        <form id="upload">    
                      
   <div class="input-group" style="margin-top: 5%; width: 30%; margin-left: 70%;">
@@ -808,11 +831,11 @@
                              
                         </div>
                          <div class="input-group-append">
-                           <button class="btn btn-outline-secondary" type="submit" style="margin: 0;">Upload</button>
+                           <button class="btn btn-outline-secondary" type="submit" style="margin: 0; padding-bottom: 1px;">Upload</button>
                         </div>
                      
                      </div>
-    </form>
+    </form> -->
                      
        <div class="row" style="align-items: center;">
         <div class="col-md-2">
@@ -1014,7 +1037,7 @@
                                 </div> 
                                 <div class="col-md-4"> 
                                     <div class="form-group">
-                                        <label>Recycle Content (%)</label>
+                                        <label>Recycle Rate (%)</label>
                                         <input type="number" class="form-control" id='materialRecycleContent' placeholder="Enter Material Recycle Content" data-errors="Please part specs." name="addmaterialRecycleContent" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
@@ -1104,7 +1127,6 @@
                                 <tr>
                                 <th >  Material Category</th>
                                   <th>  Material Name</th>
-                                    <th>  MaterialClass ID</th>
                                       <th>  Recycle Content</th>
                                         <th>  Recycle Type</th>
                                           <th>  Mass (g)</th>
@@ -1143,12 +1165,28 @@
                               <div class="modal-body">
                           
       <div class="container-fluid">
-
-                  
+<div class="col-md-6 float-right">
+   
+                       <div class="input-group mb-3">
+                        <div class="input-group-prepend" style="width: 77%;">
+                           <input type="text" class="form-control" id="myInputSub" style="margin: 0; border-radius: 10px 0 0 10px; height:46px;" onkeyup='subSearch()' name="myInputSub" placeholder="Search by..." aria-label="Search Part Name"
+                           aria-describedby="basic-addon5">
+                        </div>
+                        <select  class="custom-select searchProdSubSelection" id="inputGroupSelect03">
+                           <option selected>Choose...</option>
+                           <option value="0">Substance Name </option>
+                           <option value="2">CRM</option>
+                           <option value="3">ROHS</option>
+                        </select>
+                           <div class="input-group-append">
+                           <span class="input-group-text" id="basic-addon5"><i class="las la-search font-size-20"></i></span>
+                        </div>
+                     </div>
+</div>
         
                           <div class="table-responsive">
                     <div  class="table-wrapper"> 
-                               <table class="table-parts" id="myTable">
+                               <table class="table-parts mysubsTable" id="myTable">
                             <thead>
                                 
                                 <tr>
@@ -1205,7 +1243,7 @@
                               </div>
                               <div class="modal-body">
                           
-      <div class="container-fluid">
+      <div class="container-fluid" style="margin-left: 15px; margin-right: 15px;">
 
                   
         
@@ -1228,7 +1266,8 @@
                               <div class="row downloadtitle">
                                     <button type="button"  id="edit" class="btn btn-secondary reportbtn float-right" style="  position: -webkit-sticky; position: sticky;"  > Download Assessment Report [EN4555] </button>
                             </div>
-                            <div class="report">
+                            <div class="" style="margin-left: 15px; margin-right: 15px; margin-top: 15px;">
+                              <div class="report">
                                <div class="row" style="align-items: center;">
                           <div class="col-md-4">
                                 <tr data-id="2" data-parent="1" data-level="2">
@@ -1237,7 +1276,7 @@
                                                  <div class="input-group-prepend" height="15px;">
                                                  <span class="input-group-text" id="basic-addon3">Product Category</span>
                                                     </div>
-                                             <input readonly type="text" style="margin:0;" data-column="name" class="productCategory form-control" id="basic-url" aria-describedby="basic-addon3">
+                                             <input readonly type="text" style="margin:0;" data-column="name" class="productCategory form-control" id="basic-url" aria-describedby="basic-addon3" style="font-size: 12px;">
                                              </div>
                                  </td>
                               </tr>
@@ -1255,9 +1294,9 @@
                                <td class="" data-column="name">
                                      <div class="input-group mb-3">
                                                  <div class="input-group-prepend" height="15px;">
-                                                 <span class="input-group-text" id="basic-addon3">Product Class</span>
+                                                 <span class="input-group-text" id="basic-addon3">Product Model Name</span>
                                                     </div>
-                                             <input readonly type="text" style="margin:0;" data-column="name" class="productClass form-control" id="basic-url" aria-describedby="basic-addon3">
+                                             <input readonly type="text" style="margin:0;" data-column="name" class="productMNAssess form-control" id="basic-url" aria-describedby="basic-addon3">
                                              </div>
                                  </td>
                               </tr>
@@ -1275,14 +1314,34 @@
                                   <td class="" data-column="name">
                                      <div class="input-group mb-3">
                                                  <div class="input-group-prepend" height="15px;">
-                                                 <span class="input-group-text" id="basic-addon3">Product Specs</span>
+                                                 <span class="input-group-text" id="basic-addon3">Product Size</span>
                                                     </div>
-                                             <input readonly type="text" style="margin:0;" data-column="name" class="productSpecs form-control" id="basic-url" aria-describedby="basic-addon3">
+                                             <input readonly type="text" style="margin:0;" data-column="name" class="productSizeAssess form-control" id="basic-url" aria-describedby="basic-addon3">
+                                             </div>
+                                 </td>
+                              </tr>
+                                      <tr data-id="2" data-parent="1" data-level="2">
+                                  <td class="" data-column="name">
+                                     <div class="input-group mb-3">
+                                                 <div class="input-group-prepend" height="15px;">
+                                                 <span class="input-group-text" id="basic-addon3">Registration Date</span>
+                                                    </div>
+                                             <input readonly type="text" style="margin:0;" data-column="name" class="registeredDate form-control" id="basic-url" aria-describedby="basic-addon3">
+                                             </div>
+                                 </td>
+                              </tr>
+                                       <tr data-id="2" data-parent="1" data-level="2">
+                                  <td class="" data-column="name">
+                                     <div class="input-group mb-3">
+                                                 <div class="input-group-prepend" height="15px;">
+                                                 <span class="input-group-text" id="basic-addon3">Product Status</span>
+                                                    </div>
+                                             <input readonly type="text" style="margin:0;" data-column="name" class="productStatus form-control" id="basic-url" aria-describedby="basic-addon3">
                                              </div>
                                  </td>
                               </tr>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-3">
                       <table class="table">
                         <thead class="thead-light">
                            <tr>
@@ -1312,41 +1371,54 @@
                            
                            </tr>
                              <tr>
+                              <th scope="row">Disposal Weight</th>
+                              <td class="disposalWeightg"></td>
+                              <td class="disposalWeightPerc"></td>
+                           </tr>
+                             <tr>
+                              <th scope="row">Energy Recovery Weight</th>
+                              <td class="energyRecoveryWeightg"></td>
+                              <td class="energyRecoveryWeightperc"></td>
+                           </tr>
+                             <tr>
                               <th scope="row">Total Weight</th>
                               <td class="sumTotalWeightg"></td>
                               <td class="sumTotalWeightPerc"></td>
-                           
                            </tr>
                         </tbody>
                      </table>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-5">
                               <div class="card">
                   <div class="card-body">
-                     <div class="chart"></div>
+                     <div class="chart" id="chart"></div>
                   </div>
                </div>
                           </div>
                          </div>
-                   
+                   </div>
+                   <!--Table EN45555-->
+                               <div class="row downloadtitle">
+                                    <button type="button"  id="edit" class="btn btn-dark reportTablebtn float-right" style="  position: -webkit-sticky; position: sticky;"  > Download Assessment Table [EN4555] </button>
+                            </div>
+                            <div class="reportTable">
                          <div class="row">
                       <table class="table sumAssess">
                         <thead class="thead-dark">
                            <tr>
                               <th scope="col">Part</th>
-                              <th scope="col">Part Mass</th>
+                              <th scope="col">Part Mass(g)
+</th>
                               <th scope="col">Material</th>
                               <th scope="col">Material Mass(g) </th>
-                              <th scope="col">Reuse Mass(g)</th>
-                              <th scope="col">Reuse Mass(%)</th>
-                              <th scope="col">Recycling Mass(g)</th>
-                              <th scope="col">Recycling Mass(%)</th>
-                              <th scope="col">Recovery Mass(g)</th>
-                              <th scope="col">Recovery Mass(%)</th>
+                              <th scope="col">Reusablity Mass(g)</th>
+                              <th scope="col">Reusablity  Mass(%)</th>
+                              <th scope="col">Recyclability  Mass(g)</th>
+                              <th scope="col">Recyclability  Mass(%)</th>
+                              <th scope="col">Recoverability  Mass(g)</th>
+                              <th scope="col">Recoverability  Mass(%)</th>
                               <th scope="col">Disposable Mass(g)</th>
                               <th scope="col">Disposable Mass(%)</th>
-                              <th scope="col">Eng Rcv Mass(g)</th>
-                              <th scope="col">Eng Rcv Mass(%)</th>
                               <th scope="col">Total Mass(g)</th>
                               <th scope="col">Total Mass(%)</th>
                             
@@ -1357,6 +1429,8 @@
                         </tbody>
                      </table>
                          </div>
+                         </div>
+                          <!--End Table EN45555-->
                             </div>
                         
                         </div>
@@ -1368,7 +1442,8 @@
                                     <button type="button"  id="edit" class="btn btn-secondary reportbtnEN4557 float-right" style="  position: -webkit-sticky; position: sticky;"  > Download Assessment Report [EN4557] </button>
                             </div>
                 
-                               <div class="reportEN4557">
+                               <div class="" style="margin-left: 15px; margin-right: 15px; margin-top: 15px;">
+                                 <div class="reportEN4557">
                                <div class="row" style="align-items: center;">
                           <div class="col-md-4">
                                 <tr data-id="2" data-parent="1" data-level="2">
@@ -1391,13 +1466,13 @@
                                              </div>
                                  </td>
                               </tr>
-                               <tr data-id="2" data-parent="1" data-level="2">
+                            <tr data-id="2" data-parent="1" data-level="2">
                                <td class="" data-column="name">
                                      <div class="input-group mb-3">
                                                  <div class="input-group-prepend" height="15px;">
-                                                 <span class="input-group-text" id="basic-addon3">Product Class</span>
+                                                 <span class="input-group-text" id="basic-addon3">Product Model Name</span>
                                                     </div>
-                                             <input readonly type="text" style="margin:0;" data-column="name" class="productClass form-control" id="basic-url" aria-describedby="basic-addon3">
+                                             <input readonly type="text" style="margin:0;" data-column="name" class="productMNAssess form-control" id="basic-url" aria-describedby="basic-addon3">
                                              </div>
                                  </td>
                               </tr>
@@ -1411,13 +1486,33 @@
                                              </div>
                                  </td>
                               </tr>
-                                <tr data-id="2" data-parent="1" data-level="2">
+                                    <tr data-id="2" data-parent="1" data-level="2">
                                   <td class="" data-column="name">
                                      <div class="input-group mb-3">
                                                  <div class="input-group-prepend" height="15px;">
-                                                 <span class="input-group-text" id="basic-addon3">Product Specs</span>
+                                                 <span class="input-group-text" id="basic-addon3">Product Size</span>
                                                     </div>
-                                             <input readonly type="text" style="margin:0;" data-column="name" class="productSpecs form-control" id="basic-url" aria-describedby="basic-addon3">
+                                             <input readonly type="text" style="margin:0;" data-column="name" class="productSizeAssess form-control" id="basic-url" aria-describedby="basic-addon3">
+                                             </div>
+                                 </td>
+                              </tr>
+                                      <tr data-id="2" data-parent="1" data-level="2">
+                                  <td class="" data-column="name">
+                                     <div class="input-group mb-3">
+                                                 <div class="input-group-prepend" height="15px;">
+                                                 <span class="input-group-text" id="basic-addon3">Registration Date</span>
+                                                    </div>
+                                             <input readonly type="text" style="margin:0;" data-column="name" class="registeredDate form-control" id="basic-url" aria-describedby="basic-addon3">
+                                             </div>
+                                 </td>
+                              </tr>
+                                       <tr data-id="2" data-parent="1" data-level="2">
+                                  <td class="" data-column="name">
+                                     <div class="input-group mb-3">
+                                                 <div class="input-group-prepend" height="15px;">
+                                                 <span class="input-group-text" id="basic-addon3">Product Status</span>
+                                                    </div>
+                                             <input readonly type="text" style="margin:0;" data-column="name" class="productStatus form-control" id="basic-url" aria-describedby="basic-addon3">
                                              </div>
                                  </td>
                               </tr>
@@ -1451,29 +1546,37 @@
                           <div class="col-md-4">
                               <div class="card">
                   <div class="card-body">
-                     <div class="chartsecond"></div>
+                     <div class="chartsecond" id="chartsecond"></div>
                   </div>
                </div>
                           </div>
                          </div>
-                   
-                         <div class="row">
+                              </div>
+                              <!--Table EN45557-->
+                              <div class="row downloadtitle">
+                                    <button type="button"  id="edit" class="btn btn-dark reportTablebtnEN4557 float-right" style="  position: -webkit-sticky; position: sticky;"  > Download Assessment Report [EN4557] </button>
+                            </div>
+                            <div class="reportTableEN4557">
+                               <div class="row">
                     <table class="table materialChart">
                         <thead class="thead-dark">
                            <tr>
-                              <th scope="col">Material Group List</th>
-                                 <th scope="col">Material Name List</th>
-                                    <th scope="col">Material Mass</th>
-                                       <th scope="col">Recycled Material Mass(g)</th>
-                                                   <th scope="col">Recycled Material Mass(%)</th>
-                            
+                              <th scope="col">Material Group </th>
+                                 <th scope="col">Material Name </th>
+                                    <th scope="col">Material Mass (g) </th>
+                                       <th scope="col">Recycled rate(%)</th>
+                                                   <th scope="col">Recycled Material Mass(g)</th>
+                                     <th scope="col">Recycled Material Mass(%)</th>
                            </tr>
                         </thead>
                         <tbody class="renderEN4557">
                          
                         </tbody>
                      </table>
-                         </div>
+                                   </div>
+                            </div>
+                        
+                         <!--End Table EN45557-->
                             </div>
                         </div>
                        
@@ -1485,8 +1588,9 @@
                                     <button type="button"  id="edit" class="btn btn-secondary reportbtnEN4558 float-right" style="  position: -webkit-sticky; position: sticky;"  > Download Assessment Report [EN4558] </button>
                             </div>
                   
-                               <div class="reportEN4558">
-                               <div class="row" style="align-items: center;">
+                               <div class="" style="margin-left: 15px; margin-right: 15px; margin-top: 15px;">
+                                 <div class="reportEN4558">
+                              <div class="row" style="align-items: center;">
                           <div class="col-md-4">
                                 <tr data-id="2" data-parent="1" data-level="2">
                                <td class="" data-column="name">
@@ -1508,13 +1612,13 @@
                                              </div>
                                  </td>
                               </tr>
-                               <tr data-id="2" data-parent="1" data-level="2">
+                              <tr data-id="2" data-parent="1" data-level="2">
                                <td class="" data-column="name">
                                      <div class="input-group mb-3">
                                                  <div class="input-group-prepend" height="15px;">
-                                                 <span class="input-group-text" id="basic-addon3">Product Class</span>
+                                                 <span class="input-group-text" id="basic-addon3">Product Model Name</span>
                                                     </div>
-                                             <input readonly type="text" style="margin:0;" data-column="name" class="productClass form-control" id="basic-url" aria-describedby="basic-addon3">
+                                             <input readonly type="text" style="margin:0;" data-column="name" class="productMNAssess form-control" id="basic-url" aria-describedby="basic-addon3">
                                              </div>
                                  </td>
                               </tr>
@@ -1528,13 +1632,33 @@
                                              </div>
                                  </td>
                               </tr>
-                                <tr data-id="2" data-parent="1" data-level="2">
+                                    <tr data-id="2" data-parent="1" data-level="2">
                                   <td class="" data-column="name">
                                      <div class="input-group mb-3">
                                                  <div class="input-group-prepend" height="15px;">
-                                                 <span class="input-group-text" id="basic-addon3">Product Specs</span>
+                                                 <span class="input-group-text" id="basic-addon3">Product Size</span>
                                                     </div>
-                                             <input readonly type="text" style="margin:0;" data-column="name" class="productSpecs form-control" id="basic-url" aria-describedby="basic-addon3">
+                                             <input readonly type="text" style="margin:0;" data-column="name" class="productSizeAssess form-control" id="basic-url" aria-describedby="basic-addon3">
+                                             </div>
+                                 </td>
+                              </tr>
+                                      <tr data-id="2" data-parent="1" data-level="2">
+                                  <td class="" data-column="name">
+                                     <div class="input-group mb-3">
+                                                 <div class="input-group-prepend" height="15px;">
+                                                 <span class="input-group-text" id="basic-addon3">Registration Date</span>
+                                                    </div>
+                                             <input readonly type="text" style="margin:0;" data-column="name" class="registeredDate form-control" id="basic-url" aria-describedby="basic-addon3">
+                                             </div>
+                                 </td>
+                              </tr>
+                                       <tr data-id="2" data-parent="1" data-level="2">
+                                  <td class="" data-column="name">
+                                     <div class="input-group mb-3">
+                                                 <div class="input-group-prepend" height="15px;">
+                                                 <span class="input-group-text" id="basic-addon3">Product Status</span>
+                                                    </div>
+                                             <input readonly type="text" style="margin:0;" data-column="name" class="productStatus form-control" id="basic-url" aria-describedby="basic-addon3">
                                              </div>
                                  </td>
                               </tr>
@@ -1567,12 +1691,18 @@
                           <div class="col-md-4">
                               <div class="card">
                   <div class="card-body">
-                     <div class="chartsthree"></div>
+                     <div class="chartsthree" id="chartsthree"></div>
                   </div>
                </div>
                           </div>
-                         </div>
-                   
+                                    </div>
+                                 </div>
+                              
+                      <!-- Table EN45558-->
+                      <div class="row downloadtitle">
+                                    <button type="button"  id="edit" class="btn btn-dark reportbtnTableEN4558 float-right" style="  position: -webkit-sticky; position: sticky;"  > Download Assessment Report [EN4558] </button>
+                            </div>
+                              <div class="reportTableEN4558">
                          <div class="row">
                     <table class="table subsAssess">
                         <thead class="thead-dark">
@@ -1581,11 +1711,10 @@
                                  <th scope="col">Part Mass(g)</th>
                                     <th scope="col">Material Name</th>
                                        <th scope="col">Material Mass(g)</th>
-                                        
                               <th scope="col">CRM Substance</th>
                               <th scope="col">CAS No.</th>
-                              <th scope="col">Mass(g) </th>
-                                   <th scope="col">Mass(%)</th>
+                              <th scope="col" class="crmWeightg">CRM Mass(g) </th>
+                                   <th scope="col">CRM Mass(%)</th>
                                       <th scope="col">CRMs</th>
                                          <th scope="col">ROHS</th>
                            </tr>
@@ -1598,6 +1727,8 @@
                      
                      
                          </div>
+                         </div>
+                            <!--End Table EN45558-->
                             </div>
                         </div>
                        
@@ -1608,9 +1739,109 @@
             </div>
          </div>    
         </div>
+     
+     <div class="modal fade" id="addsubsproduct" tabindex="-1" role="dialog" aria-labelledby="addsubsproduct" style="z-index: 99999;" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable" role="document">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <h5 class="modal-title " id="partproductmaterialsubsTitle"><span class="treeproducttitle"></span></h5>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                                 </button>
+                              </div>
+                              <div class="modal-body">
+                          
+      <div class="container-fluid">
+
+                    <form id="form-wizard1" class="addSubsForm text-center mt-4" name="formwizard" >
+                      
+                    
+                           <div class="form-card text-left">
+                              <div class="row">
+                            
+                             
+                              </div>
+                              <div class="row">
+                                     <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>Substance Type: *</label>
+                                        <select  class="getprodsubstancetype form-control" id="sel1" name="getprodsubstancetype">
+                                            <option value="">물질 종류 선택</option>
+                                            <option value="crm">CRM</option>
+                                            <option value="rohs">ROHS</option>
+                                            <option value="rohs">None</option>
+                                          
+                                        </select>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>Substance Name: *</label>
+                                        <select  class="getprodsubstancelist form-control" id="getSubsname" name="getprodsubstancetype">
+                                            <option value="">Select an option</option>
+                                          
+                                        </select>
+                                    </div>
+                                 </div>
+                              
+                              </div>
+                           </div>
+                         
+                   
+                           <div class="form-card text-left">
+                              <div class="row">
+                                 <div class="col-7">
+                                 </div>
+                                
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                       <label>CAS Number: *</label>
+                                       <input readonly type="text" class="addcas form-control" name="addcas" value="" placeholder=""  />
+                                    </div>
+                                 </div>
+                                    <div class="col-md-4">
+                                    <div class="form-group">
+                                       <label>Substance Mass (g): *</label>
+                                       <input type="number" class="addsubstanceMassg form-control" name="addsubstanceMassg"  />
+                                    </div>
+                                 </div>
+                                   <div class="col-md-4">
+                                    <div class="form-group">
+                                       <label>Substance Mass (%) : *</label>
+                                       <input type="number" class="addsubstanceMassPerc form-control" name="addsubstanceMassPerc"  />
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="row" style="visibility: hidden; height: 0;">
+                                   <div class="col-md-6" >
+                                    <div class="form-group">
+                                       <label>CRMs: *</label>
+                                       <input readonly type="text" class="addcrm form-control" name="addcrm" />
+                                    </div>
+                                 </div>
+                               
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>ROHS: *</label>
+                                        <input readonly type="text" class="addrohs form-control" name="addrohs" />
+                                      
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                              <button type="button" id="addSubs" class="btn btn-dark action-button float-right" >Add New Substance</button>
+                    
+                     </form>
+                        <button type="button" id="subsmodalclose" class="btn btn-secondary action-button-close" data-dismiss="modaly-wrapper" >Close</button>
+                  </div>
+               </div>            
+            </div>
+         </div>    
+        </div>
 
 
- 
 
                     
     <!-- Wrapper End-->
@@ -1644,23 +1875,9 @@
      
  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
   <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
-
   <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+  <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-storage.js"></script>
   <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-functions.js"></script>
-  <!-- <script>
-    const firebaseConfig = {
-  apiKey: "AIzaSyAq2QjImxRXEtRHN-N6u2YEod-wUJMtI1s",
-  authDomain: "projectcrm-f4e5f.firebaseapp.com",
-  databaseURL: "https://projectcrm-f4e5f-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "projectcrm-f4e5f",
-  storageBucket: "projectcrm-f4e5f.appspot.com",
-  messagingSenderId: "404890912341",
-  appId: "1:404890912341:web:5b129be76ccdfeba8c76dc",
-  measurementId: "G-TL8J23TNZE"
-};
-  </script> -->
-
- <!-- <script  type="module" src="./auth.js" defer></script> -->
 
    
     <!-- Backend Bundle JavaScript -->
@@ -1670,28 +1887,44 @@
     <!-- Table Treeview JavaScript -->
     <script src="./table-treeview.js"></script>
  <script  type="module" src="./products.js" ></script>
+
     <script    src="./sidemenu.js" ></script>
      <script  type="module" src="./addbtn.js" ></script>
+      <script   src="./uploadarea/uploadImgProd.js" ></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
     <!-- Chart Custom JavaScript -->
     <script src="./customizer.js"></script>
-    
+      <script  src="./searchProd.js" ></script>
+          <script  src="./sortandsearch/sortProd.js" ></script>
     <!-- Chart Custom JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     
     <!-- app JavaScript -->
     <script src="./app.js"></script>
      <!-- <script   type="module" src="./auth.js" ></script> -->
-     <script>feather.replace()</script>
+        <!-- <script>feather.replace()</script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
-     <script>
+
+
+
+    <script>
        const report = document.querySelector('.report')
        const reportbtn = document.querySelector('.reportbtn')
         const reportEN4558 = document.querySelector('.reportEN4558')
        const reportbtnEN4558 = document.querySelector('.reportbtnEN4558')
         const reportEN4557 = document.querySelector('.reportEN4557')
-       const reportbtnEN4557 = document.querySelector('.reportbtnEN4557')
+         const reportbtnEN4557 = document.querySelector('.reportbtnEN4557')
 
+          const reportTablebtnEN4557 = document.querySelector('.reportTablebtnEN4557')
+            const reportTableEN4557 = document.querySelector('.reportTableEN4557')
+
+
+              const reportTableEN4558 = document.querySelector('.reportTableEN4558')
+                const reportbtnTableEN4558 = document.querySelector('.reportbtnTableEN4558')
+        
+                const reportTablebtn = document.querySelector('.reportTablebtn')
+                const reportTable = document.querySelector('.reportTable')
+                
 window.onload = function () {
        reportbtn
         .addEventListener("click", () => {
@@ -1723,9 +1956,49 @@ window.onload = function () {
             html2pdf().from(invoice).set(opt).save();
         })
 
-     reportbtnEN4557
-        .addEventListener("click", () => {
+     
+       reportbtnEN4557.addEventListener("click", () => {
             const invoice = reportEN4557;
+            console.log(invoice);
+            console.log(window);
+            var opt = {
+                margin: 0.1,
+                filename: 'Assessment Report EN4557.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'cm', format: 'A2', orientation: 'portrait' }
+            };
+            html2pdf().from(invoice).set(opt).save();
+        })
+          
+        reportTablebtnEN4557.addEventListener("click", () => {
+            const invoice = reportTableEN4557;
+            console.log(invoice);
+            console.log(window);
+            var opt = {
+                margin: 0.1,
+                filename: 'Assessment Report EN4557.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'cm', format: 'A2', orientation: 'portrait' }
+            };
+            html2pdf().from(invoice).set(opt).save();
+        })
+             reportbtnTableEN4558.addEventListener("click", () => {
+            const invoice = reportTableEN4558;
+            console.log(invoice);
+            console.log(window);
+            var opt = {
+                margin: 0.1,
+                filename: 'Assessment Report EN4557.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'cm', format: 'A2', orientation: 'portrait' }
+            };
+            html2pdf().from(invoice).set(opt).save();
+        })
+             reportTablebtn.addEventListener("click", () => {
+            const invoice = reportTable;
             console.log(invoice);
             console.log(window);
             var opt = {

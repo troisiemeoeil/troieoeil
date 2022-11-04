@@ -67,99 +67,81 @@ const renderUser = doc => {
   `;
   tableUsers.insertAdjacentHTML('beforeend', tr);
 
-//add parts
-//  const btnpradd'substances' = document.querySelector(`[data-id='${doc.id}'] .btnpr-addSubs`);
-// btnpradd'substances'.addEventListener('click', () => {
-//   addmodalySubssSingle.classList.add('modaly-show');
-
-//   addModalySubs.addmaterialName.value = '';
-
-//    addModalyParts.addEventListener('submit', e => {
-//   e.preventDefault();
-//   // console.log(doc.id, " => ", doc.data());
-//   db.collection('substances').doc(`${doc.id}`).collection('substances').add({
-//     substanceName: addModalySubs.addmaterialName.value,
-//     substanceGroup: addModalySubs.addmaterialGroup.value,
-//     substanceClassId: addModalySubs.addmaterialClassID.value,
-//     substanceRecycleContent: addModalySubs.addmaterialRecycleContent.value,
-//     substanceRecycleType: addModalySubs.addmaterialRecycleType.value,
-//     substanceMassg: addModalySubs.addmaterialMassg.value,
-//     substanceMassPerc: addModalySubs.addmaterialMassPerc.value
-    
-  
-//   })})
-
- 
-
-//   })
+  let searchPartSelection = document.querySelector(".searchPartSelection")
+searchPartSelection.addEventListener('change', ()=>{
+if (searchPartSelection.value == 0) {
 
 
+var tableusersfilter, rows, switching, i, x, y, shouldSwitch;
+var tableusersfilter = document.querySelector(".table-users")
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = tableusersfilter.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[0];
+      y = rows[i + 1].getElementsByTagName("TD")[0];
+      //check if the two rows should switch place:
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+else if (searchPartSelection.value == 1) {
 
 
-
-
-
-// Click on view product button
-
- 
-
-
-  // Click edit user
-  // const btnprEdit = document.querySelector(`[data-id='${doc.id}'] .btnpr-edit`);
-  // btnprEdit.addEventListener('click', () => {
-  //   editmodaly.classList.add('modaly-show');
-  //   const editHeader = document.querySelector('.editheader')
-  //   id = doc.id;
-  //   editHeader.innerHTML = 'Edit ' + doc.data().subtanceName
-  //   editmodalyForm.editsubstanceName.value = doc.data().subtanceName;
-  //   editmodalyForm.editcas.value = doc.data().casnumber;
-  //   editmodalyForm.editcrm.value = doc.data().crm;
-  //   editmodalyForm.editrohs.value = doc.data().rohs;
-  //   editmodalyForm.editsubstanceMassg.value = doc.data().substancemassg;
-  //   editmodalyForm.editsubstanceMassPerc.value = doc.data().substancemassperc;
-    
-    
-
-    
-  //   //edit the parts section
-    
-
-   
-
-  // });
-
-  
-
-  // Click delete user
-  // const btnprDelete = document.querySelector(`[data-id='${doc.id}'] .btnpr-delete`);
-  // btnprDelete.addEventListener('click', () => {
-  //   db.collection('substances').doc(`${doc.id}`).delete().then(() => {
-  //     console.log('Document succesfully deleted!');
-  //   }).catch(err => {
-  //     console.log('Error removing document', err);
-  //   });
-  // });
-
-
-  //  // get subcollection data 
-  // const btnprget = document.querySelector(`[data-id='${doc.id}'] .btnpr-edit`);
-  // btnprget.addEventListener('click', () => {
-
-  // db.collection('substances').doc(`${doc.id}`).collection('parts').get()
-  //   .then((querySnapshot) => {
-  //       querySnapshot.forEach((doc) => {
-  //         conso
-  //           // doc.data() is never undefined for query doc snapshots
-  //           console.log(doc.data().partName);
-  //       });
-  //   })
-  //   .catch((error) => {
-  //       console.log("Error getting documents: ", error);
-  //   });
-  // });
-
-  
-
+var tableusersfilter, rows, switching, i, x, y, shouldSwitch;
+var tableusersfilter = document.querySelector(".table-users")
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = tableusersfilter.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[1];
+      y = rows[i + 1].getElementsByTagName("TD")[1];
+      //check if the two rows should switch place:
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+})
 
 }
  
@@ -294,6 +276,8 @@ db.collection('materialsdb').onSnapshot(snapshot => {
   })
 })
 
+ 
+
 // Click submit in add modaly
 addModalyForm.addEventListener('submit', e => {
   e.preventDefault();
@@ -373,8 +357,8 @@ const editUI = (user) => {
       const userDisplayName = firebase.auth().currentUser.displayName
     console.log(user.metadata.lastSignInTime)
     console.log(firebase.auth().currentUser.displayName)
-    firstcreation.innerHTML = "Since "  + firstcreationtime;
-    userDisplay.innerHTML = userDisplayName;
+    // firstcreation.innerHTML = "Since "  + firstcreationtime;
+    // userDisplay.innerHTML = userDisplayName;
     } else {
        const userTitleCard = document.getElementById('usertitle')
        
@@ -383,11 +367,11 @@ const editUI = (user) => {
         const notadminElement = document.querySelectorAll('.notadmin')
     adminElement.forEach(item => item.style.display = 'none');
     notadminElement.forEach(item => item.style.display = 'flex');
-    lastsignindata = firebase.auth().currentUser.metadata.lastSignInTime
-    console.log(lastsignindata)
+    // lastsignindata = firebase.auth().currentUser.metadata.lastSignInTime
+    // console.log(lastsignindata)
     // notadminElement.style.display = 'flex'
-    userTitleCard.innerHTML = 'Viewer'
-     lastsignin.innerHTML = ''
+    userTitleCard.innerHTML = 'Part Supplier'
+    //  lastsignin.innerHTML = ''
 
     }
 
@@ -396,6 +380,7 @@ const editUI = (user) => {
     console.log("not an admin")
   }
 }
+
 
 
 

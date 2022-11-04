@@ -6,9 +6,10 @@
       <title>자원효율성 통합시스템 | Dashboard for managing recyclable products</title>
       
       <!-- Favicon -->
-      
+     
  <link rel="stylesheet" href="./products.css" />
- 
+  <link rel="stylesheet" href="./parts.css" />
+ <link rel="stylesheet" href="./addbtn.css" />
    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
       <link rel="stylesheet" href="./backend.css" />
       <link rel="stylesheet" href="./backend-plugin.min.css">
@@ -27,13 +28,11 @@
   
       </head>
   <body class="">
-  
-    
-  <!-- loader Start -->
+    <!-- loader Start -->
    
     <!-- loader END -->
     <!-- Wrapper Start -->
-     <div class="sidebar">
+    <div class="sidebar">
     <div class="logo-details">
      
         <div class="logo_name">KitechCRM</div>
@@ -61,39 +60,55 @@
       </li>
       <li>
        <a class="adminelement" href="./listofproducts" style="display: none;">
-         <i  class='bx bx-user' ></i>
+       
+              <i class='bx bxs-cube-alt'></i>
          <span class="links_name">제품목록</span>
        </a>
        <span class="tooltip">제품목록</span>
      </li>
       <li>
        <a class="notadmin" href="./parts" style="display: none;">
-         <i  class='bx bx-user' ></i>
-         <span class="links_name">제품목록</span>
-       </a>
-       <span class="tooltip">제품목록</span>
-     </li>
-       <li>
-       <a class="adminelement" href="./partslist" style="display: none;">
-         <i  class='bx bx-user' ></i>
+    <i class='bx bxs-component' ></i>
          <span class="links_name">부품목록</span>
        </a>
        <span class="tooltip">부품목록</span>
      </li>
+       <li>
+       <a class="adminelement" href="./partslist" style="display: none;">
+ <i class='bx bxs-component' ></i>
+         <span class="links_name">부품목록</span>
+       </a>
+       <span class="tooltip">부품목록</span>
+     </li>
+     <li>
+       <a class="notadmin" href="./materialsdb" style="display: none;">
+ <i class='bx bx-pie-chart-alt-2' ></i>
+         <span class="links_name">소재목록</span>
+       </a>
+       <span class="tooltip">소재목록</span>
+     </li>
+     <li>
+       <a class="notadmin" href="./substances" style="display: none;">
+  <i class='bx bx-dna' ></i>
+         <span class="links_name">물질목록</span>
+       </a>
+       <span class="tooltip">물질목록</span>
+     </li>
           <li>
        <a class="adminelement" href="#" style="display: none;">
-         <i class='bx bx-pie-chart-alt-2' ></i>
+        <i class='bx bx-bell' ></i>
          <span class="links_name">공지사항</span>
        </a>
        <span class="tooltip">공지사항</span>
      </li>
      <li>
        <a class="notadmin" href="#" style="display: none;">
-         <i class='bx bx-pie-chart-alt-2' ></i>
+       <i class='bx bx-bell' ></i>
          <span class="links_name">공지사항</span>
        </a>
        <span class="tooltip">공지사항</span>
      </li>
+        
     
      <li class="profile" style="margin-bottom: 30px; background:#11101D;">
          <div class="profile-details">
@@ -101,9 +116,11 @@
            <div class="name_job">
              <div class="name">Logout</div>
              <div class="job">2022 - 2023</div>
+               
            </div>
          </div>
         <a href="/sessionLogout"> <i class='bx bx-log-out' id="log_out" ></i> </a>
+       
      </li>
     </ul>
   </div>

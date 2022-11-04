@@ -20,18 +20,30 @@ function tableSearch() {
             }
 
         };
+let searchChoice = document.querySelector(".searchPartSelection")
+searchChoice.addEventListener('change', ()=>{
+if (searchChoice.value == 1) {
+document.getElementsByName('myInputMat')[0].placeholder = 'Search by Part Name'
+}
+else if (searchChoice.value == 2) {
+document.getElementsByName('myInputMat')[0].placeholder = 'Search by Part Code'
+}
+})
 
 function materialSearch() {
             let input, filter, table, tr, td, txtValue;
+
+let searchChoice = document.querySelector(".searchPartSelection")
 
             //Intialising Variables
             input = document.getElementById("myInputMat");
             filter = input.value.toUpperCase();
             table = document.getElementById("myTableMat");
             tr = table.getElementsByTagName("tr");
-
+         
+    
             for (let i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[1];
+                td = tr[i].getElementsByTagName("td")[searchChoice.value];
                 if (td) {
                     txtValue = td.textContent || td.innerText;
                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -41,10 +53,11 @@ function materialSearch() {
                     }
                 }
             }
+            
 
         };
 
-
+        
         function productSearch() {
             let input, filter, table, tr, td, txtValue;
 
@@ -68,28 +81,7 @@ function materialSearch() {
 
         };
 
-        ///////////// Multiselect field
 
-    let multiselect_block = document.querySelectorAll(".multiselect_block");
-    multiselect_block.forEach(parent => {
-        let label = parent.querySelector(".field_multiselect");
-        let select = parent.querySelector(".field_select");
-        let text = label.innerHTML;
-        select.addEventListener("change", function(element) {
-            let selectedOptions = this.selectedOptions;
-            label.innerHTML = "";
-            for (let option of selectedOptions) {
-                let button = document.createElement("button");
-                button.type = "button";
-                button.className = "btn_multiselect";
-                button.textContent = option.value;
-                button.onclick = _ => {
-                    option.selected = false;
-                    button.remove();
-                    if (!select.selectedOptions.length) label.innerHTML = text
-                };
-                label.append(button);
-            }
-        })
-    })
 
+
+        

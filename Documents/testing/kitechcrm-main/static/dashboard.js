@@ -71,11 +71,11 @@ const editUI = (user) => {
     adminElement.forEach(item => item.style.display = 'none');
     notadminElement.forEach(item => item.style.display = 'flex');
     userTitleCard.innerHTML = 'Part Supplier'
-    lastsignindata = firebase.auth().currentUser.metadata.lastSignInTime
-    console.log(lastsignindata)
+    // lastsignindata = firebase.auth().currentUser.metadata.lastSignInTime
+    // console.log(lastsignindata)
     // notadminElement.style.display = 'flex'
-    userTitleCard.innerHTML = 'Viewer'
-     lastsignin.innerHTML = ''
+  
+    //  lastsignin.innerHTML = ''
 
     }
 
