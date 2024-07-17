@@ -2,16 +2,23 @@
 import BaseHead from "@/components/BaseHead.astro";
 import Navigation from "@/components/global/Navigation.astro";
 import Footer from "@/components/global/Footer.astro";
-import SmoothScrolling from '@/components/SmoothScrolling.jsx'
 ---
 
 <html lang="en" class="selection:text-black selection:bg-white scroll">
   <head>
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <script is:inline>
+     (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+    </script>
     <BaseHead />
   </head>
   
-  <body class="bg-black 2xl:max-w-7xl mx-auto">
+  <body class="bg-black  dark:bg-blue-50  2xl:max-w-7xl mx-auto">
       <!-- <SmoothScrolling  client:load> -->
       <Navigation />
       <slot />
@@ -19,3 +26,6 @@ import SmoothScrolling from '@/components/SmoothScrolling.jsx'
     <!-- </SmoothScrolling> -->
     </body>
 </html>
+
+
+

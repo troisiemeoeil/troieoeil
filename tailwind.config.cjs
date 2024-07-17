@@ -72,9 +72,13 @@ module.exports = {
       },
       backgroundImage: (theme) => ({
         gradientTopRight:
-          "linear-gradient(229.7deg,#fdfdfe 14.85%,#ffbb88 20.61%,#ff7cba 26.17%,#887bff 31.93%,#03c7f6 46.54%,#0F1014 54.36%)",
+          "linear-gradient(229.7deg,#fdfdfe 14.85%,#ffbb88 20.61%,#ff7cba 26.17%,#887bff 31.93%,#03c7f6 46.54%,#0F1014 54.36%,#0F1014 54.36% )",
+          gradientTopRightLight:
+          "linear-gradient(229.7deg,#fdfdfe 14.85%,#ffbb88 20.61%,#ff7cba 26.17%,#887bff 31.93%,#03c7f6 46.54%, #eff6ff 54.36% )",
           gradientBottomLeft:
           "linear-gradient(47deg, #FDFDFE 10.68%, #FB8 17.61%, #FF7CBA 24.3%, #887BFF 31.23%, #03C7F6 48.82%, #0F1014 58.23%)",
+          gradientBottomLeftLight:
+          "linear-gradient(47deg, #FDFDFE 10.68%, #FB8 17.61%, #FF7CBA 24.3%, #887BFF 31.23%, #03C7F6 48.82%, #eff6ff 58.23%)",
           gradientToTop:
           "linear-gradient(0deg, #FFF -2.39%, #FB8 7.4%, #FF7CBA 16.83%, #887BFF 26.61%, #03C7F6 51.42%, #0F1014 64.69%)",
       }),
@@ -99,6 +103,7 @@ module.exports = {
       },
     },
   },
+  darkMode: 'class',
   plugins: [
     require("@tailwindcss/forms"),
     require("@tailwindcss/typography"),

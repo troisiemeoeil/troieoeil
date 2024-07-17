@@ -9,18 +9,18 @@ import { bizwork } from "../../data/bizwork.json";
   class="md:px-12 sm:px-8 relative border-b border-zinc-700 scroll-mt-24 2xl:border-x"
   id="services"
 >
-  <div class="border-x border-zinc-700 divide-y divide-zinc-700">
+  <div class="border-x border-zinc-700 divide-y divide-zinc-700 ">
     <div
-      class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 bg-zinc-700   gap-px  lg:rounded-[3rem] overflow-hidden ring-1 ring-zinc-700"
+      class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 bg-zinc-700 dark:bg-black/10   gap-px  lg:rounded-[3rem] overflow-hidden ring-1 ring-zinc-700"
     >
       <div
-        class="lg:p-px col-span-full lg:col-span-2   bg-gradientBottomLeft overflow-hidden"
+        class="lg:p-px col-span-full lg:col-span-2  dark:bg-gradientBottomLeftLight bg-gradientBottomLeft overflow-hidden"
       >
         <div
-          class="bg-black/80 ring-1 w-full lg:rounded-[3rem] lg:rounded-r-none h-full items-center inline-flex text-black ring-white/5 ring-inset  backdrop-blur-2xl p-8 lg:px-20"
+          class="bg-black/80 dark:bg-blue-50/80 ring-1 w-full lg:rounded-[3rem] lg:rounded-r-none h-full items-center inline-flex text-black dark:text-white ring-white/5 ring-inset  backdrop-blur-2xl p-8 lg:px-20"
         >
           <h2
-            class="text-3xl tracking-tighter font-light lg:text-6xl text-white"
+            class="text-3xl tracking-tighter font-light lg:text-6xl text-white dark:text-zinc-900"
           >
             Exploring a diverse range of  <span
               >services to elevate your brand presence
@@ -28,21 +28,21 @@ import { bizwork } from "../../data/bizwork.json";
           </h2>
         </div>
       </div>
-      <div class="bg-black">
+      <div class="bg-black dark:bg-blue-50">
         <div
           class="p-8 inline-flex items-center border-b w-full border-white/10"
         >
-          <p class="text-2xl text-white">Sofware Development</p>
+          <p class="text-2xl text-white dark:text-zinc-600">Sofware Development</p>
         </div>
-        <div class="divide-y divide-white/10">
+        <div class="divide-y divide-white/10 dark:divide-black/10">
           {
             designwork.map((template) => (
               <>
                 <div class="px-8  py-4 flex flex-col sm:flex-row justify-between gap-4 lg:items-end">
-                  <p class="font-medium leading-6 text-white text-sm flex gap-2 items-center">
+                  <p class="font-medium leading-6 text-white dark:text-zinc-600  text-sm flex gap-2 items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="w-4 h-4 icon icon-tabler icon-tabler-circle-check-filled text-white/50"
+                      class="w-4 h-4 icon icon-tabler icon-tabler-circle-check-filled text-white/50 dark:text-zinc-600/50"
                       viewBox="0 0 24 24"
                       stroke-width="2"
                       stroke="currentColor"
@@ -67,21 +67,21 @@ import { bizwork } from "../../data/bizwork.json";
           }
         </div>
       </div>
-      <div class="bg-black">
+      <div class="bg-black dark:bg-blue-50">
         <div
           class="p-8 inline-flex items-center border-b w-full border-white/10"
         >
-          <p class="text-2xl text-white">3D/AR Experiences</p>
+          <p class="text-2xl text-white dark:text-zinc-600">3D/AR Experiences</p>
         </div>
-        <div class="divide-y divide-white/10">
+        <div class="divide-y divide-white/10 dark:divide-black/10">
           {
             devwork.map((template) => (
               <>
                 <div class="px-8  py-4 flex flex-col sm:flex-row justify-between gap-4 lg:items-end">
-                  <p class="font-medium leading-6 text-white text-sm flex gap-2 items-center">
+                  <p class="font-medium leading-6 text-white dark:text-zinc-600 text-sm flex gap-2 items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="w-4 h-4 icon icon-tabler icon-tabler-circle-check-filled text-white/50"
+                      class="w-4 h-4 icon icon-tabler icon-tabler-circle-check-filled text-white/50 dark:text-zinc-600/50"
                       viewBox="0 0 24 24"
                       stroke-width="2"
                       stroke="currentColor"
@@ -106,21 +106,21 @@ import { bizwork } from "../../data/bizwork.json";
           }
         </div>    
       </div>
-      <div class="bg-black">
+      <div class="bg-black dark:bg-blue-50">
         <div
           class="p-8 inline-flex items-center border-b w-full border-white/10"
         >
-          <p class="text-2xl text-white">IT Entreprise Solutions</p>
+          <p class="text-2xl text-white dark:text-zinc-600">IT Entreprise Solutions</p>
         </div>
-        <div class="divide-y divide-white/10">
+        <div class="divide-y divide-white/10 dark:divide-black/10">
           {
             bizwork.map((template) => (
               <>
                 <div class="px-8  py-4 flex flex-col sm:flex-row justify-between gap-4 lg:items-end">
-                  <p class="font-medium leading-6 text-white text-sm flex gap-2 items-center">
+                  <p class="font-medium leading-6 text-white dark:text-zinc-600 text-sm flex gap-2 items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="w-4 h-4 icon icon-tabler icon-tabler-circle-check-filled text-white/50"
+                      class="w-4 h-4 icon icon-tabler icon-tabler-circle-check-filled text-white/50 dark:text-zinc-600/50"
                       viewBox="0 0 24 24"
                       stroke-width="2"
                       stroke="currentColor"
