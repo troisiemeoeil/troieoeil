@@ -12,13 +12,13 @@ class="md:px-12 sm:px-8 relative border-zinc-700 2xl:border-x hidden md:block"
       class="p-8 lg:p-20 rounded-4xl ring-1 ring-zinc-700 lg:rounded-[3rem] overflow-hidden"
     >
       <span class="text-sky-400"> FAQ</span><h2
-        class="text-3xl mt-6 tracking-tighter font-light lg:text-4xl text-white"
+        class="text-3xl mt-6 tracking-tighter font-light lg:text-4xl text-white dark:text-zinc-600"
       >
         The answers to the most <span class="block text-zinc-400"
           >popular frequent questions
         </span>
       </h2>
-      <p class="mt-5 text-white">
+      <p class="mt-5 text-white dark:text-zinc-600">
         Can't find your answer? Send us an <a
           class="text-sky-400 hover:text-white duration-200"
           href="mailto:work@troisiemeoeil.io">email</a
@@ -26,7 +26,7 @@ class="md:px-12 sm:px-8 relative border-zinc-700 2xl:border-x hidden md:block"
       </p>
     </div>
     <div x-data="{selected:null}">
-      <ul class="list-none text-white" role="list" @click="open = !open">
+      <ul class="list-none text-white dark:text-zinc-600" role="list" @click="open = !open">
         <!-- <li class="relative border-zinc-700 border-b">
           <button
             class="w-full p-8 lg:px-20 text-left"
@@ -68,8 +68,8 @@ class="md:px-12 sm:px-8 relative border-zinc-700 2xl:border-x hidden md:block"
             class="w-full p-8 lg:px-20 text-left"
             @click="selected !== 2 ? selected = 2 : selected = null"
             type="button"
-            ><div class="items-center flex justify-between text-white">
-              <p class="text-xl tracking-tighter font-light text-white">
+            ><div class="items-center flex justify-between text-white dark:text-zinc-600">
+              <p class="text-xl tracking-tighter font-light text-white dark:text-zinc-600">
                 How do we communicate and manage the project?
               </p><svg
                 class="ml-4 duration-200 h-5 inline rotate-180 transform transition-transform w-5"
@@ -90,7 +90,7 @@ class="md:px-12 sm:px-8 relative border-zinc-700 2xl:border-x hidden md:block"
             x-ref="container2"
           >
             <div class="text-sm text-zinc-400 lg:text-lg p-8 lg:px-20">
-              Troisieme Oeil uses Slack for project management, ensuring a swift
+              Troisieme Oeil uses Zoho and Slack ecosystems for project management, ensuring a swift
               communication and collaboration.
             </div>
           </div>
@@ -100,8 +100,8 @@ class="md:px-12 sm:px-8 relative border-zinc-700 2xl:border-x hidden md:block"
             class="w-full p-8 lg:px-20 text-left"
             @click="selected !== 3 ? selected = 3 : selected = null"
             type="button"
-            ><div class="items-center flex justify-between text-white">
-              <p class="text-xl tracking-tighter font-light text-white">
+            ><div class="items-center flex justify-between text-white dark:text-zinc-600">
+              <p class="text-xl tracking-tighter font-light text-white dark:text-zinc-600">
                 How quickly will I get some work done?
 
 
@@ -135,8 +135,8 @@ class="md:px-12 sm:px-8 relative border-zinc-700 2xl:border-x hidden md:block"
             class="w-full p-8 lg:px-20 text-left"
             @click="selected !== 4 ? selected = 4 : selected = null"
             type="button"
-            ><div class="items-center flex justify-between text-white">
-              <p class="text-xl tracking-tighter font-light text-white">
+            ><div class="items-center flex justify-between text-white dark:text-zinc-600">
+              <p class="text-xl tracking-tighter font-light text-white dark:text-zinc-600">
                 Why do you only have two spots ?
 
 
@@ -171,8 +171,8 @@ class="md:px-12 sm:px-8 relative border-zinc-700 2xl:border-x hidden md:block"
             class="w-full p-8 lg:px-20 text-left"
             @click="selected !== 5 ? selected = 5 : selected = null"
             type="button"
-            ><div class="items-center flex justify-between text-white">
-              <p class="text-xl tracking-tighter font-light text-white">
+            ><div class="items-center flex justify-between text-white dark:text-zinc-600">
+              <p class="text-xl tracking-tighter font-light text-white dark:text-zinc-600">
                 I need a long-lasting project management service, can you provide that?
 
 
@@ -206,8 +206,8 @@ class="md:px-12 sm:px-8 relative border-zinc-700 2xl:border-x hidden md:block"
             class="w-full p-8 lg:px-20 text-left"
             @click="selected !== 6 ? selected = 6 : selected = null"
             type="button"
-            ><div class="items-center flex justify-between text-white">
-              <p class="text-xl tracking-tighter font-light text-white">
+            ><div class="items-center flex justify-between text-white dark:text-zinc-600 ">
+              <p class="text-xl tracking-tighter font-light text-white dark:text-zinc-600">
                 Do you offer training or documentation for the project?
 
               </p><svg

@@ -7,47 +7,47 @@
       class="grid grid-cols-1 xl:grid-cols-3 gap-px border-white/5 rounded-4xl ring-1 ring-zinc-700 lg:rounded-[3rem] overflow-hidden"
     >
       <div
-        class="text-white xl:col-span-2 uppercase font-black text-3xl bg-black flex flex-col justify-start lg:text-8xl tracking-[-0.2rem] p-8 lg:p-20"
+        class="text-white dark:text-zinc-600 xl:col-span-2 uppercase font-black text-3xl bg-black dark:bg-blue-50 flex flex-col justify-start lg:text-8xl tracking-[-0.2rem] p-8 lg:p-20"
       >
       <img src="/footer/troisiemeoeilbanner-up.webp" />
       </div>
       <div class="grid grid-cols-2 xl:grid-cols-1 gap-12 p-8 lg:p-20">
         <div class="grid md:grid-cols-3 gap-6 lg:gap-24">
-          <div class="bg-black">
-            <h3 class="text-zinc-400 text-base lg:text-xl">Navigation</h3>
+          <div class="bg-black dark:bg-blue-50 ">
+            <h3 class="text-zinc-400 dark:text-zinc-900  text-base lg:text-xl">Navigation</h3>
             <div class="grid md:grid-cols-2 gap-6">
-              <ul role="list" class="mt-4 text-xs space-y-2 text-white uppercase">
+              <ul role="list" class="mt-4 text-xs space-y-2 text-white dark:text-zinc-600 uppercase">
                 <li>
-                  <a href="" class="hover:text-cyan-400"> Homepage</a>
+                  <a href="" class="hover:text-blue-400"> Homepage</a>
                 </li>
                 <li>
-                  <a href="" class="hover:text-cyan-400"> Services</a>
+                  <a href="" class="hover:text-blue-400"> Services</a>
                 </li>
                 <li>
-                  <a href="" class="hover:text-cyan-400"> Pricing</a>
+                  <a href="" class="hover:text-blue-400"> Pricing</a>
                 </li>
                 <li>
-                  <a href="" class="hover:text-cyan-400"> Projects</a>
+                  <a href="" class="hover:text-blue-400"> Projects</a>
                 </li>
                 <li>
-                  <a href="" class="hover:text-cyan-400">FAQ </a>
+                  <a href="" class="hover:text-blue-400">FAQ </a>
                 </li>
                 <li>
-                  <a href="" class="hover:text-cyan-400"> CONTACT</a>
+                  <a href="" class="hover:text-blue-400"> CONTACT</a>
                 </li>
               </ul>
             </div>
           
           </div>
-          <div class="bg-black  @apply w-max">
-            <h3 class="text-zinc-400 text-base lg:text-xl">Socials</h3>
-            <ul role="list" class="mt-4 text-xs space-y-2 text-white uppercase">
+          <div class="bg-black dark:bg-blue-50  @apply w-max">
+            <h3 class="text-zinc-400 dark:text-zinc-900 text-base lg:text-xl">Socials</h3>
+            <ul role="list" class="mt-4 text-xs space-y-2 text-white dark:text-zinc-600 uppercase">
               <li>
                 <a
                   href="https://www.instagram.com/troisiemeoeildigital/"
                   target="_blank"
 
-                  class="hover:text-cyan-400"
+                  class="hover:text-blue-400"
                 >
                   IG: @troisiemeoeildigital
                 </a>
@@ -56,7 +56,7 @@
                 <a
                   href="https://www.facebook.com/troisiemeoeilagency/"
                   target="_blank"
-                  class="hover:text-cyan-400"
+                  class="hover:text-blue-400"
                 >
                   FB: @troisiemeoeilagency
                 </a>
@@ -65,7 +65,7 @@
                 <a
                   href="https://www.linkedin.com/company/troisiemeoeildigital"
                   target="_blank"
-                  class="hover:text-cyan-400"
+                  class="hover:text-blue-400"
                 >
                   LK: @troisiemeoeildigital
                 </a>
@@ -85,7 +85,7 @@
   <div class="border-x border-zinc-700 divide-y divide-zinc-700">
     <div class="p-8 lg:px-20">
       <nav class="flex lg:flex-row gap-8">
-        <p class="text-sm text-white">
+        <p class="text-sm text-white dark:text-zinc-900">
           © <span id="CurrentYear"></span> TROISIEME OEIL DIGITAL. All rights reserved
         </p>
       </nav>
@@ -97,5 +97,5 @@
 <script> 
 const d = new Date();
 let year = d.getFullYear();
-document.getElementById("CurrentYear").innerHTML = year.toString();
+document.getElementById("CurrentYear").innerHTML = year.toString() ;
 </script>
