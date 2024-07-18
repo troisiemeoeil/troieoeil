@@ -22,7 +22,7 @@
         <div class="p-8 lg:px-20 shrink-0">
           <button
             @click.prevent="testimonialActive = 1"
-            class="inline-block mx-2 font-bold rounded-full shadow-xs focus:outline-none focus:ring-2 h-12 w-12 opacity-25 ring-1 ring-offset-4 ring-zinc-700 ring-offset-black bg-gradientdown"
+            class="inline-block mx-2 font-bold rounded-full shadow-xs focus:outline-none focus:ring-2 h-12 w-12 opacity-25 ring-1 ring-offset-4 ring-zinc-700 dark:ring-blue-50 dark:ring-offset-blue-300 ring-offset-black bg-gradientdown"
             :class="{'h-12 w-12 opacity-25 bg-gradientdown ': testimonialActive != 1, 'opacity-100 bg-gradientdown text-white': testimonialActive == 1 }"
             ><img
               class="inline-block w-12 h-12 rounded-full object-cover grayscale"
@@ -31,21 +31,21 @@
             /></button
           ><button
             @click.prevent="testimonialActive = 2"
-            class="inline-block mx-2 font-bold rounded-full shadow-xs focus:outline-none focus:ring-2 ring-1 ring-offset-4 ring-zinc-700 ring-offset-black opacity-100 bg-gradientdown"
+            class="inline-block mx-2 font-bold rounded-full shadow-xs focus:outline-none focus:ring-2 ring-1 ring-offset-4 ring-zinc-700 ring-offset-black dark:ring-blue-50 dark:ring-offset-blue-300 opacity-100 bg-gradientdown"
             :class="{'h-12 w-12 opacity-25 bg-gradientdown ': testimonialActive != 2, 'opacity-100 bg-gradientdown ': testimonialActive == 2 }"
             ><img
               class="inline-block w-12 h-12 rounded-full object-cover grayscale"
               src="/clients/onskad.webp"
-              alt="Rob ustin"
+              alt=""
             /></button
           ><button
             @click.prevent="testimonialActive = 3"
-            class="inline-block mx-2 font-bold rounded-full shadow-xs focus:outline-none focus:ring-2 h-12 w-12 opacity-25 ring-1 ring-offset-4 ring-zinc-700 ring-offset-black bg-gradientdown"
+            class="inline-block mx-2 font-bold rounded-full shadow-xs focus:outline-none focus:ring-2 h-12 w-12 opacity-25 ring-1 ring-offset-4 ring-zinc-700 ring-offset-black dark:ring-blue-50 dark:ring-offset-blue-300 bg-gradientdown"
             :class="{'h-12 w-12 opacity-25 bg-gradientdown ': testimonialActive != 3, 'opacity-100 bg-gradientdown text-white': testimonialActive == 3 }"
             ><img
               class="inline-block w-12 h-12 rounded-full object-cover grayscale"
               src="/clients/actoria.webp"
-              alt="@heychazza on twitter"
+              alt=""
             /></button
           >
         </div>
@@ -56,14 +56,14 @@
               x-show="testimonialActive == 1"
               style="display: none;"
             >
-              <h2 class="text-white text-sm font-medium lg:text-base">
+              <h2 class="text-white dark:text-zinc-600 text-sm font-medium lg:text-base">
                 Seungjae Leem
               </h2><a href="#" class="text-xs text-zinc-400"
                 >Founder of Harvestance Inc</a
               >
             </div>
             <div    x-show="testimonialActive == 2">
-              <h2 class="text-white text-sm font-medium lg:text-base">
+              <h2 class="text-white dark:text-zinc-600 text-sm font-medium lg:text-base">
                 Virginie Dohye
               </h2><a href="#" class="text-xs text-zinc-400"
                 >Founder of Onskad Fragrances</a
@@ -74,7 +74,7 @@
               x-show="testimonialActive == 3"
               style="display: none;"
             >
-              <h2 class="text-white text-sm font-medium lg:text-base">
+              <h2 class="text-white dark:text-zinc-600 text-sm font-medium lg:text-base">
                Fabrice Lange
               </h2><a href="#" class="text-xs text-zinc-400">
                 Founder of Actoria International</a
@@ -87,7 +87,7 @@
               style="display: none;"
             >
               <p
-                class="text-zinc-300 text-base max-w-xl"
+                class="text-zinc-300 dark:text-zinc-600 text-base max-w-xl"
                 x-show.transition="testimonialActive == 1"
                 style="display: none;"
               >
@@ -99,7 +99,7 @@
             </div>
             <div x-show.immediate="testimonialActive === 2">
               <p
-                class="text-zinc-300 text-base max-w-xl"
+                class="text-zinc-300 dark:text-zinc-600 text-base max-w-xl"
                 x-show.transition="testimonialActive == 2"
               >
                 Troisieme Oeil has a great eye for design and is an absolute
@@ -112,7 +112,7 @@
               style="display: none;"
             >
               <p
-                class="text-zinc-300 text-base max-w-xl"
+                class="text-zinc-300 dark:text-zinc-600 text-base max-w-xl"
                 x-show.transition="testimonialActive == 3"
                 style="display: none;"
               >
