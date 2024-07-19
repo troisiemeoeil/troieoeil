@@ -11,7 +11,7 @@ export interface Template {
     description: "Exploring the creative potential of Figma for seamless design collaboration.",
     type: "Design Collaboration",
     title: "Figma Xperience",
-    image: "/logos/figma.svg",
+    image: "/assets/work3.jpg",
     date: "2023-10-15",
   };
 
@@ -20,7 +20,7 @@ export interface Template {
     description: "Utilizing JetBrains tools to supercharge the development journey of StartupForge Apps.",
     type: "Development Tooling",
     title: "JetBrains",
-    image: "/logos/jetbrains.svg",
+    image: " /assets/work2.jpg",
     date: "2023-11-02",
   };
 
@@ -29,7 +29,7 @@ export interface Template {
     description: "Creating innovative solutions for smart homes and IoT ecosystems using Discord.",
     type: "IoT Integration",
     title: "VSCode",
-    image: "/logos/vscode.svg",
+    image: " /assets/work1.jpg",
     date: "2023-11-20",
   };
 
@@ -38,7 +38,7 @@ export interface Template {
     description: "Transforming ideas into captivating visual stories with MotionCraft Studios and Zapier.",
     type: "Visual Storytelling",
     title: "Zapier",
-    image: "/logos/zapier.svg",
+    image: "/logos/jetbrains.svg",
     date: "2023-12-05",
   };
 
