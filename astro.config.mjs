@@ -27,7 +27,6 @@ export default defineConfig({
         filter: (page) =>
           page !== 'https://troisiemeoeil.io/blog/blog-one/' &&
           page !== 'https://troisiemeoeil.io/blog/blog-two/' &&
-          // page !== 'https://troisiemeoeil.io/contact/' &&
           page !== 'https://troisiemeoeil.io/faq/'&&
           page !== 'https://troisiemeoeil.io/infopages/about/' &&
           page !== 'https://troisiemeoeil.io/infopages/faq/'&&
